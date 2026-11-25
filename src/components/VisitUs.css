@@ -1,0 +1,478 @@
+/* ==========================================
+   VISIT US SECTION
+========================================== */
+
+.visit-us-section {
+  position: relative;
+  width: 100%;
+  padding: 65px 5% 100px;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* ==========================================
+   CLASSROOM IMAGE
+========================================== */
+
+.visit-visual {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border-radius: 26px 26px 0 0;
+  isolation: isolate;
+}
+
+.visit-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  transition: transform 1.2s ease;
+  border-radius: 50px;
+}
+
+.visit-us-section:hover .visit-hero-image {
+  transform: scale(1.025);
+}
+
+.visit-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 30, 59, 0.08),
+    rgba(16, 30, 59, 0.02) 55%,
+    rgba(16, 30, 59, 0.25)
+  );
+  pointer-events: none;
+}
+
+.visit-image-label {
+  position: absolute;
+  top: 30px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 19px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50px ;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.visit-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d9ad62;
+  box-shadow: 0 0 10px rgba(217, 173, 98, 0.8);
+}
+
+/* ==========================================
+   CONTENT PANEL
+========================================== */
+
+.visit-content-panel {
+  position: relative;
+  z-index: 2;
+  width: 96%;
+  margin: -115px auto 0;
+  padding: 55px 4%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+
+  background: rgba(255, 253, 249, 0.91);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 25px;
+  box-shadow: 0 25px 65px rgba(23, 42, 87, 0.12);
+}
+
+/* ==========================================
+   LEFT CONTENT
+========================================== */
+
+.visit-content-left {
+  min-width: 0;
+}
+
+.visit-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #a77b3e;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 23px;
+}
+
+.visit-eyebrow span {
+  display: block;
+  width: 45px;
+  height: 1px;
+  background: #a77b3e;
+}
+
+.visit-content-left h2 {
+  color: #172a57;
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -1.5px;
+  margin: 0;
+}
+
+.visit-content-left h2 span {
+  color: #a77b3e;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.visit-description {
+  max-width: 590px;
+  color: #52617e;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.95;
+  margin: 27px 0 32px;
+}
+
+/* ==========================================
+   ACTIONS AND FEATURES
+========================================== */
+
+.visit-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.visit-tour-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 17px;
+  padding: 11px 12px 11px 23px;
+  border-radius: 50px;
+  background: #172a57;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: all 0.35s ease;
+}
+
+.visit-tour-button:hover {
+  background: #a77b3e;
+  transform: translateY(-3px);
+}
+
+.visit-tour-button span {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #f2cb88;
+}
+
+.visit-tour-button:hover span {
+  color: #fff;
+}
+
+/* FEATURES */
+
+.visit-features {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.visit-feature {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 13px;
+  border-left: 1px solid rgba(167, 123, 62, 0.45);
+  color: #a77b3e;
+  text-align: center;
+}
+
+.visit-feature div {
+  display: flex;
+  flex-direction: column;
+  color: #172a57;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+/* ==========================================
+   LOCATION CARD
+========================================== */
+
+.visit-location-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  width: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid rgba(23, 42, 87, 0.1);
+  border-radius: 23px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(23, 42, 87, 0.10);
+}
+
+/* LOCATION DETAILS */
+
+.visit-location-info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 30px 24px;
+  background: #fffdf9;
+}
+
+.visit-location-icon {
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f5e7ce;
+  color: #a77b3e;
+  margin-bottom: 20px;
+}
+
+.visit-location-label {
+  color: #a77b3e;
+  font-family: 'Manrope', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.visit-location-info h3 {
+  color: #172a57;
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.visit-location-info p {
+  color: #52617e;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.visit-location-divider {
+  width: 65px;
+  height: 2px;
+  background: #d1a35e;
+  margin: 20px 0;
+}
+
+.visit-map-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 15px;
+  border-radius: 50px;
+  background: #172a57;
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.visit-map-button:hover {
+  background: #a77b3e;
+  transform: translateY(-2px);
+}
+
+/* MAP */
+
+.visit-map-preview {
+  position: relative;
+  display: block;
+  min-height: 300px;
+  overflow: hidden;
+  background: #e8edf1;
+}
+
+.visit-map-preview iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  display: block;
+  border: 0;
+}
+
+.visit-map-open {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #172a57;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1100px) {
+  .visit-us-section {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .visit-content-panel {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: -80px;
+  }
+
+  .visit-content-left h2 {
+    font-size: 58px;
+  }
+
+  .visit-location-card {
+    max-width: 750px;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+  .visit-us-section {
+    padding: 45px 15px 65px;
+  }
+
+  .visit-visual {
+    height: 310px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .visit-hero-image {
+    object-position: center;
+  }
+
+  .visit-image-label {
+    top: 15px;
+    left: 15px;
+    font-size: 8px;
+  }
+
+  .visit-content-panel {
+    width: 96%;
+    padding: 30px 20px;
+    margin-top: -45px;
+    border-radius: 19px;
+    gap: 35px;
+  }
+
+  .visit-content-left h2 {
+    font-size: clamp(39px, 10vw, 49px);
+    letter-spacing: -1px;
+  }
+
+  .visit-description {
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 20px 0 25px;
+  }
+
+  .visit-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .visit-features {
+    width: 100%;
+  }
+
+  .visit-feature {
+    padding: 5px 7px;
+  }
+
+  .visit-feature div {
+    font-size: 9px;
+  }
+
+  .visit-location-card {
+    grid-template-columns: 1fr;
+    border-radius: 17px;
+  }
+
+  .visit-location-info {
+    padding: 25px;
+  }
+
+  .visit-map-preview {
+    min-height: 230px;
+  }
+
+  .visit-map-preview iframe {
+    min-height: 230px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .visit-us-section *,
+  .visit-us-section *::before,
+  .visit-us-section *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

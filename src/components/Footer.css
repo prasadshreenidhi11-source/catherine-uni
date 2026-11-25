@@ -1,0 +1,432 @@
+/* ==========================================
+   FOOTER ROOT
+========================================== */
+
+.school-footer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0b1435;
+  color: #ffffff;
+  padding: 55px 2.55% 0;
+  isolation: isolate;
+}
+
+/* ==========================================
+   MAIN FOOTER LAYOUT
+========================================== */
+
+.footer-main {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 2.5fr;
+  gap: 6%;
+  padding-bottom: 62px;
+}
+
+/* ==========================================
+   BRAND COLUMN
+========================================== */
+
+.footer-brand {
+  min-width: 0;
+}
+
+.footer-eyebrow {
+  display: inline-block;
+  color: #f5bd45;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+}
+
+.footer-brand h2 {
+  color: #ffffff;
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(39px, 3.2vw, 59px);
+  font-weight: 400;
+  line-height: 0.99;
+  letter-spacing: -1.8px;
+  margin: 0 0 35px;
+}
+
+.footer-brand h2 span {
+  color: #f5bd45;
+  font-style: italic;
+}
+
+
+/* ==========================================
+   FOOTER BUTTONS
+========================================== */
+
+.footer-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.footer-tour-button,
+.footer-phone-button {
+  min-height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 23px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.footer-tour-button {
+  background: #f5bd45;
+  color: #0b1435;
+  border: 1px solid #f5bd45;
+}
+
+.footer-tour-button:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.footer-tour-button svg {
+  transition: transform 0.3s ease;
+}
+
+.footer-tour-button:hover svg {
+  transform: translateX(5px);
+}
+
+.footer-phone-button {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: transparent;
+}
+
+.footer-phone-button:hover {
+  color: #f5bd45;
+  border-color: #f5bd45;
+  transform: translateY(-3px);
+}
+/* PHONE NUMBER WHITE */
+.footer-phone-button,
+.footer-phone-button span,
+.footer-phone-button svg {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+}
+
+/* ==========================================
+   SOCIAL ICONS
+========================================== */
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 33px;
+}
+
+.footer-socials a {
+  width: 53px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #0b1435;
+  background: #f5bd45;
+  border-color: #f5bd45;
+}
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.footer-navigation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 35px;
+}
+
+.footer-nav-column {
+  min-width: 0;
+}
+
+.footer-nav-group h3 {
+  color: #ffffff;
+  font-family: 'DM Serif Display', serif;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 17px;
+}
+
+.footer-nav-group ul {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav-group li {
+  margin: 0;
+}
+
+.footer-nav-group a {
+  color: #c3cbe0;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.footer-nav-group a:hover {
+  color: #f5bd45;
+}
+
+.footer-second-group {
+  margin-top: 44px;
+}
+
+/* ==========================================
+   FOOTER BOTTOM
+========================================== */
+
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 35px;
+  padding: 29px 0 35px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-acknowledgement {
+  max-width: 790px;
+  color: #b9c3dc;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.footer-copyright {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #b9c3dc;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.footer-copyright-divider {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-copyright a {
+  color: #cbd3e7;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.25s ease;
+}
+
+.footer-copyright a:hover {
+  color: #f5bd45;
+}
+
+/* ==========================================
+   LARGE WATERMARK
+========================================== */
+
+.footer-watermark {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  margin-top: -5px;
+  color: rgba(196, 204, 226, 0.28);
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(100px, 13.5vw, 245px);
+  font-weight: 400;
+  line-height: 0.78;
+  letter-spacing: -9px;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1100px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 65px;
+  }
+
+  .footer-brand h2 {
+    font-size: 58px;
+  }
+
+  .footer-navigation {
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-watermark {
+    font-size: 15vw;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+  .school-footer {
+    padding: 45px 22px 0;
+  }
+
+  .footer-main {
+    gap: 50px;
+    padding-bottom: 40px;
+  }
+
+  .footer-eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .footer-brand h2 {
+    font-size: clamp(42px, 10vw, 55px);
+    margin-bottom: 27px;
+  }
+
+  .footer-buttons {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .footer-tour-button,
+  .footer-phone-button {
+    width: fit-content;
+    min-height: 53px;
+  }
+
+  .footer-socials {
+    margin-top: 25px;
+  }
+
+  .footer-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 38px;
+  }
+
+  .footer-nav-group h3 {
+    font-size: 21px;
+  }
+
+  .footer-nav-group a {
+    font-size: 12px;
+  }
+
+  .footer-nav-group ul {
+    gap: 12px;
+  }
+
+  .footer-second-group {
+    margin-top: 34px;
+  }
+
+  .footer-bottom {
+    padding: 23px 0 28px;
+    gap: 15px;
+  }
+
+  .footer-acknowledgement {
+    font-size: 12px;
+  }
+
+  .footer-copyright {
+    flex-wrap: wrap;
+    font-size: 11px;
+    white-space: normal;
+  }
+
+  .footer-watermark {
+    font-size: 16vw;
+    letter-spacing: -3px;
+    line-height: 0.9;
+    margin-top: 5px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+  .footer-navigation {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-watermark {
+    font-size: 17vw;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .school-footer *,
+  .school-footer *::before,
+  .school-footer *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+.footer-watermark {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  margin-top: 0;
+
+  color: rgba(196, 204, 226, 0.28);
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(75px, 10vw, 175px);
+  font-weight: 400;
+
+  line-height: 0.9;
+  letter-spacing: -5px;
+  text-align: center;
+  white-space: nowrap;
+
+  pointer-events: none;
+  user-select: none;
+}

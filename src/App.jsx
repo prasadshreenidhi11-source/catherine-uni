@@ -6,6 +6,10 @@ import TeachingLearning from './components/TeachingLearning'
 import OurValues from './components/OurValues'
 import WeatherReport from './components/WeatherReport'
 import NewsStories from './components/NewsStories'
+import Enrolment from './components/Enrolment'
+import VisitUs from './components/VisitUs'
+import Acknowledgement from './components/Acknowledgement'
+import Footer from './components/Footer'
 import { TranslationProvider } from './context/TranslationContext'
 import { useTranslation } from './context/useTranslation'
 import './App.css'
@@ -27,31 +31,17 @@ function MainContent() {
         <OurValues />
         <WeatherReport />
         <NewsStories />
+        <Enrolment />
+        <VisitUs/>
+        <Acknowledgement />
+         <Footer />
 
         
 
         
      
 
-        {/* Footer */}
-        <footer className="site-footer" id="contact">
-          <div className="footer-brand">
-            <img
-              src="/favicon.png"
-              alt="Catherine McAuley School"
-              className="footer-logo"
-              width="36"
-              height="40"
-            />
-            <span>Catherine McAuley School</span>
-          </div>
-
-          <p>{translate('Building brighter futures, together.')}</p>
-
-          <a href="mailto:info@cms.catholic.edu.au">
-            {translate('Get in touch')} ↗
-          </a>
-        </footer>
+     
 
       </div>
     </main>

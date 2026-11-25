@@ -11,7 +11,7 @@ const stories = [
     description:
       'We are excited to share plans for a multimillion-dollar two-storey building upgrade.',
     image:
-      'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=85',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhdEPdUdvWQEFoigCllIpKDJGX5ppCXxeoi6fLedqj0w&s=10',
     link: '#'
   },
   {

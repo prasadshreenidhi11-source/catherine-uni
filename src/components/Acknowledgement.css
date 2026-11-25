@@ -1,0 +1,189 @@
+/* ==========================================
+   ACKNOWLEDGEMENT OF COUNTRY
+========================================== */
+
+.acknowledgement-section {
+  position: relative;
+  width: 100%;
+  min-height: 370px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 55px 25px;
+
+  background-color: #202e68;
+  background-image: url('/images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.acknowledgement-content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 850px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* ==========================================
+   GOLD DECORATIVE SYMBOL
+========================================== */
+
+.acknowledgement-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  margin-bottom: 30px;
+}
+
+.acknowledgement-line {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: #c59a43;
+}
+
+.acknowledgement-symbol {
+  position: relative;
+
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px dotted #e5b43f;
+  border-radius: 50%;
+}
+
+.acknowledgement-symbol::before {
+  content: '';
+
+  position: absolute;
+
+  width: 19px;
+  height: 19px;
+
+  border: 1.5px solid #e5b43f;
+  border-radius: 50%;
+}
+
+.acknowledgement-symbol span {
+  width: 7px;
+  height: 7px;
+
+  background: #e5b43f;
+  border-radius: 50%;
+}
+
+/* ==========================================
+   HEADING
+========================================== */
+
+.acknowledgement-content h2 {
+  color: #ffffff;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+
+  line-height: 1.3;
+
+  margin: 0 0 18px;
+}
+
+/* ==========================================
+   PARAGRAPH
+========================================== */
+
+.acknowledgement-content p {
+  max-width: 790px;
+
+  color: rgba(255, 255, 255, 0.94);
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+
+  line-height: 1.8;
+
+  margin: 0;
+}
+
+.acknowledgement-content strong {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 768px) {
+  .acknowledgement-section {
+    min-height: 340px;
+    padding: 50px 25px;
+  }
+
+  .acknowledgement-content h2 {
+    font-size: 27px;
+  }
+
+  .acknowledgement-content p {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+  .acknowledgement-section {
+    min-height: auto;
+    padding: 55px 20px;
+    background-position: center;
+  }
+
+  .acknowledgement-decoration {
+    margin-bottom: 24px;
+    gap: 17px;
+  }
+
+  .acknowledgement-line {
+    width: 42px;
+  }
+
+  .acknowledgement-content h2 {
+    font-size: 23px;
+    margin-bottom: 17px;
+  }
+
+  .acknowledgement-content p {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .acknowledgement-content p br {
+    display: none;
+  }
+}
