@@ -1,0 +1,446 @@
+/* =========================================
+   MAIN HEADER — SCHOOL BRANDING & HAMBURGER
+   Transparent, uncluttered, clear visibility
+========================================= */
+
+.main-header {
+  position: absolute;
+  top: 36px; /* positioned smoothly right below mini header */
+  left: 0;
+  right: 0;
+  z-index: 40;
+  width: 100%;
+  padding: 18px 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  pointer-events: none;
+}
+
+/* School Branding */
+
+.header-brand {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.header-brand:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.header-brand-logo {
+  width: 46px;
+  height: 51px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+}
+
+.header-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-brand-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.header-brand-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 3px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Prominent Hamburger Button */
+
+.main-hamburger-btn {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: rgba(13, 30, 56, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.main-hamburger-btn:hover {
+  background: #174c3d;
+  border-color: #ffffff;
+  transform: scale(1.06);
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.35);
+}
+
+.hamburger-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 22px;
+}
+
+.hamburger-bars .bar {
+  display: block;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.bar-1 {
+  width: 22px;
+}
+
+.bar-2 {
+  width: 16px;
+  align-self: flex-end;
+}
+
+.bar-3 {
+  width: 22px;
+}
+
+.main-hamburger-btn:hover .bar-2 {
+  width: 22px;
+}
+
+/* =========================================
+   FULL-SCREEN NAVIGATION MENU OVERLAY (PORTAL)
+========================================= */
+
+.fullscreen-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999; /* Higher than any header or hero elements */
+  background: rgba(10, 24, 44, 0.98);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+  pointer-events: none;
+}
+
+.fullscreen-nav-backdrop.nav-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.fullscreen-nav-modal {
+  width: 100%;
+  height: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 36px 6% 40px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Top bar: Crest branding + Close icon */
+
+.fullscreen-nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.nav-school-identity {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-crest-img {
+  width: 40px;
+  height: 45px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.nav-school-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-school-main {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 22px;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.nav-school-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 2px;
+}
+
+.fullscreen-nav-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.fullscreen-nav-close:hover {
+  background: #ffffff;
+  color: #0f243e;
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Navigation Body (Links on left, Info on right) */
+
+.fullscreen-nav-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-top: 36px;
+}
+
+/* Links List */
+
+.fullscreen-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fullscreen-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 18px;
+  border-radius: 4px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  position: relative;
+  transform: translateX(-15px);
+  opacity: 0;
+}
+
+.nav-active .fullscreen-nav-item {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transition-delay: calc(var(--anim-order) * 40ms);
+}
+
+.fullscreen-nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(8px);
+}
+
+.item-num {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #e5c07b; /* Elegant soft gold */
+}
+
+.item-label {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(26px, 3.2vw, 40px);
+  letter-spacing: -0.3px;
+  color: #ffffff;
+}
+
+.item-arrow {
+  margin-left: auto;
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: all 0.25s ease;
+  color: #e5c07b;
+}
+
+.fullscreen-nav-item:hover .item-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Sidebar Info Block */
+
+.fullscreen-nav-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.info-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #e5c07b; /* Soft gold */
+  margin-bottom: 12px;
+}
+
+.info-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.info-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.contact-icon {
+  color: #e5c07b;
+}
+
+.fullscreen-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 26px;
+  background: #ffffff;
+  color: #0f243e;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.fullscreen-nav-cta:hover {
+  background: #e5c07b;
+  color: #0f243e;
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (HEADER & MODAL)
+========================================= */
+
+@media (max-width: 960px) {
+  .fullscreen-nav-body {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-top: 24px;
+  }
+
+  .fullscreen-nav-info {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .item-label {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 650px) {
+  .main-header {
+    top: 32px;
+    padding: 14px 4.5%;
+  }
+
+  .header-brand-logo {
+    width: 38px;
+    height: 42px;
+  }
+
+  .header-brand-title {
+    font-size: 18px;
+  }
+
+  .header-brand-sub {
+    font-size: 8px;
+  }
+
+  .main-hamburger-btn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .fullscreen-nav-modal {
+    padding: 24px 4.5% 30px;
+  }
+
+  .item-label {
+    font-size: 22px;
+  }
+
+  .fullscreen-nav-item {
+    padding: 10px 8px;
+    gap: 14px;
+  }
+
+  .close-text {
+    display: none;
+  }
+
+  .fullscreen-nav-close {
+    padding: 8px 12px;
+  }
+}

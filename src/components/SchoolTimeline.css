@@ -1,0 +1,600 @@
+
+/* =========================================
+   SCHOOL TIMELINE
+   Premium interactive school history
+========================================= */
+
+.school-timeline {
+  position: relative;
+  width: 100%;
+  padding: 105px 7%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.school-timeline-inner {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.timeline-section-heading {
+  max-width: 850px;
+  margin: 0 auto 75px;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.timeline-visible .timeline-section-heading {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-main-eyebrow {
+  display: inline-block;
+  margin-bottom: 22px;
+
+  color: #786B59;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.timeline-section-heading h2 {
+  margin: 0;
+
+  color: #172A57;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.timeline-section-heading h2 span {
+  color: #A77B3E;
+  font-style: italic;
+}
+
+.timeline-section-heading > p {
+  max-width: 650px;
+  margin: 23px auto 0;
+
+  color: #354563;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* =========================================
+   MAIN CONTENT LAYOUT
+========================================= */
+
+.school-timeline-content {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 90px;
+}
+
+/* =========================================
+   LEFT: FOUR POINTS
+========================================= */
+
+.timeline-visual {
+  position: relative;
+  width: 100%;
+  max-width: 690px;
+  aspect-ratio: 1 / 0.88;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+
+  /* No connecting lines */
+  background: transparent;
+}
+
+/* CENTRAL LOGO */
+
+.timeline-logo {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+
+  width: clamp(115px, 12vw, 155px);
+  aspect-ratio: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 23px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid rgba(167, 123, 62, 0.28);
+  border-radius: 50%;
+
+  box-shadow: 0 15px 45px rgba(23, 42, 87, 0.10);
+
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.75);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.timeline-visible .timeline-logo {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.timeline-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =========================================
+   TIMELINE POINT CARDS
+========================================= */
+
+.timeline-point {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 185px;
+
+  padding: 24px 25px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(23, 42, 87, 0.08);
+  border-radius: 15px;
+
+  text-align: left;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.timeline-visible .timeline-point {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-visible .timeline-point-1 {
+  transition-delay: 0.15s;
+}
+
+.timeline-visible .timeline-point-2 {
+  transition-delay: 0.3s;
+}
+
+.timeline-visible .timeline-point-3 {
+  transition-delay: 0.45s;
+}
+
+.timeline-visible .timeline-point-4 {
+  transition-delay: 0.6s;
+}
+
+/* NUMBER */
+
+.timeline-point-number {
+  display: block;
+  margin-bottom: 12px;
+
+  color: #172A57;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(48px, 5vw, 70px);
+  font-weight: 400;
+  line-height: 1;
+
+  transition: color 0.3s ease;
+}
+
+.timeline-point-2 .timeline-point-number {
+  color: #A77B3E;
+}
+
+/* LABEL */
+
+.timeline-point-label {
+  color: #786B59;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+/* ARROW */
+
+.timeline-point-arrow {
+  display: inline-block;
+  margin-top: 15px;
+
+  color: #A77B3E;
+  font-size: 21px;
+
+  transition: transform 0.3s ease;
+}
+
+/* HOVER / ACTIVE */
+
+.timeline-point:hover,
+.timeline-point.active {
+  background: rgba(255, 255, 255, 0.76);
+  border-color: rgba(167, 123, 62, 0.35);
+  box-shadow: 0 15px 40px rgba(23, 42, 87, 0.08);
+}
+
+.timeline-point:hover .timeline-point-number,
+.timeline-point.active .timeline-point-number {
+  color: #A77B3E;
+}
+
+.timeline-point:hover .timeline-point-arrow,
+.timeline-point.active .timeline-point-arrow {
+  transform: translate(5px, -4px);
+}
+
+.timeline-point:focus-visible,
+.timeline-indicator:focus-visible {
+  outline: 2px solid #A77B3E;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   RIGHT: INFORMATION PANEL
+========================================= */
+
+.timeline-description-panel {
+  position: relative;
+  width: 100%;
+  max-width: 590px;
+  padding: 25px 0;
+}
+
+.timeline-panel-eyebrow {
+  display: block;
+  margin-bottom: 28px;
+
+  color: #786B59;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.7px;
+}
+
+/* DYNAMIC CONTENT */
+
+.timeline-panel-content {
+  animation: timelineReveal 0.5s ease both;
+}
+
+@keyframes timelineReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LARGE YEAR */
+
+.timeline-panel-number {
+  display: block;
+
+  color: #172A57;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(65px, 7vw, 100px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+/* CATEGORY */
+
+.timeline-panel-category {
+  display: inline-block;
+  margin-top: 18px;
+
+  color: #A77B3E;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+}
+
+/* HEADING */
+
+.timeline-panel-heading {
+  margin: 16px 0 20px;
+
+  color: #172A57;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(29px, 3vw, 43px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* MAIN DESCRIPTION */
+
+.timeline-panel-description {
+  margin: 0 0 17px;
+
+  color: #354563;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+/* SUPPORTING DESCRIPTION */
+
+.timeline-panel-detail {
+  max-width: 520px;
+  margin: 0;
+
+  color: #53647e;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* LINK */
+
+.timeline-panel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 17px;
+
+  margin-top: 32px;
+  padding-bottom: 9px;
+
+  color: #A77B3E;
+  border-bottom: 1px solid #A77B3E;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: gap 0.3s ease;
+}
+
+.timeline-panel-link:hover {
+  gap: 24px;
+}
+
+.timeline-panel-link span {
+  font-size: 19px;
+}
+
+/* =========================================
+   NAVIGATION INDICATORS
+========================================= */
+
+.timeline-panel-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 45px;
+}
+
+.timeline-indicator {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+
+  background: rgba(23, 42, 87, 0.23);
+  border: none;
+  border-radius: 20px;
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.timeline-indicator.active {
+  width: 34px;
+  background: #A77B3E;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+  .school-timeline {
+    padding: 85px 5%;
+  }
+
+  .school-timeline-content {
+    gap: 45px;
+  }
+
+  .timeline-point {
+    min-height: 155px;
+    padding: 18px;
+  }
+
+  .timeline-point-number {
+    font-size: clamp(40px, 5vw, 58px);
+  }
+
+  .timeline-panel-description {
+    font-size: 15px;
+  }
+
+  .timeline-panel-detail {
+    font-size: 14px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .school-timeline {
+    padding: 70px 6%;
+  }
+
+  .timeline-section-heading {
+    margin-bottom: 45px;
+    text-align: left;
+  }
+
+  .timeline-section-heading h2 {
+    font-size: clamp(38px, 9vw, 52px);
+    letter-spacing: -1.5px;
+  }
+
+  .timeline-section-heading > p {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .school-timeline-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .timeline-visual {
+    max-width: 530px;
+    aspect-ratio: 1 / 0.9;
+    gap: 14px;
+  }
+
+  .timeline-point {
+    min-height: 125px;
+    padding: 13px;
+    border-radius: 11px;
+  }
+
+  .timeline-point-number {
+    font-size: clamp(38px, 10vw, 54px);
+  }
+
+  .timeline-point-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .timeline-point-arrow {
+    margin-top: 9px;
+  }
+
+  .timeline-logo {
+    width: clamp(90px, 24vw, 125px);
+    padding: 17px;
+  }
+
+  .timeline-description-panel {
+    max-width: 100%;
+    padding: 5px 0 15px;
+  }
+
+  .timeline-panel-number {
+    font-size: 72px;
+  }
+
+  .timeline-panel-heading {
+    font-size: 32px;
+  }
+
+  .timeline-panel-description {
+    font-size: 15px;
+  }
+
+  .timeline-panel-detail {
+    font-size: 14px;
+  }
+
+  .timeline-panel-indicator {
+    margin-top: 32px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+  .timeline-visual {
+    gap: 9px;
+  }
+
+  .timeline-point {
+    min-height: 112px;
+    padding: 10px;
+  }
+
+  .timeline-point-number {
+    font-size: 35px;
+  }
+
+  .timeline-point-label {
+    font-size: 8px;
+  }
+
+  .timeline-logo {
+    width: 84px;
+    padding: 14px;
+  }
+
+  .timeline-panel-number {
+    font-size: 60px;
+  }
+
+  .timeline-panel-heading {
+    font-size: 28px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .school-timeline *,
+  .school-timeline *::before,
+  .school-timeline *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .timeline-section-heading,
+  .timeline-logo,
+  .timeline-point {
+    opacity: 1;
+    transform: none;
+  }
+}
