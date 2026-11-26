@@ -36,7 +36,7 @@ function VisitUs() {
   ]
 
   return (
-    <section className="visit-us-section" id="visit-us">
+    <section id="visit-us" className="visit-us">
 
       {/* CLASSROOM IMAGE */}
       <div className="visit-visual">

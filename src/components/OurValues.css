@@ -1,12 +1,13 @@
 
 /* =========================================
-   OUR VALUES — MERCY VALUES
+   OUR VALUES
+   Premium 3 x 2 Card Layout
 ========================================= */
 
 .our-values {
   position: relative;
   width: 100%;
-  padding: 85px 5% 100px;
+  padding: 4px 5% 100px;
   overflow: hidden;
   box-sizing: border-box;
   background: transparent;
@@ -14,24 +15,27 @@
 
 .our-values-inner {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-/* HEADING */
+/* =========================================
+   SECTION HEADING
+========================================= */
 
 .our-values-heading {
   max-width: 760px;
-  margin: 0 auto 55px;
+  margin: 0 auto 60px;
   text-align: center;
 }
 
 .values-eyebrow {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   color: #786B59;
+  font-family: 'Manrope', sans-serif;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 3px;
 }
 
@@ -52,232 +56,178 @@
 
 .our-values-heading > p {
   max-width: 650px;
-  margin: 22px auto 0;
+  margin: 20px auto 0;
   color: #354563;
+  font-family: 'Manrope', sans-serif;
   font-size: 15px;
   line-height: 1.9;
 }
 
-/* CARD ARRANGEMENT */
+/* =========================================
+   VALUES GRID
+========================================= */
 
-.values-arc {
-  position: relative;
-  width: 100%;
-  max-width: 1120px;
-  min-height: 475px;
-  margin: 0 auto;
-}
-
-.values-cards {
-  position: relative;
-  z-index: 2;
+.values-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: start;
-  gap: 15px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
   width: 100%;
-  padding: 20px 0 0;
 }
 
-/* INDIVIDUAL CARD POSITIONS */
+/* =========================================
+   VALUE CARD
+========================================= */
 
 .value-card {
   position: relative;
-  width: 100%;
-  height: 245px;
-  perspective: 1100px;
-}
+  min-width: 0;
+  min-height: 285px;
+  padding: 30px 30px 28px;
+  box-sizing: border-box;
+  overflow: hidden;
 
-.value-card:nth-child(1) {
-  margin-top: 100px;
-  transform: rotate(-13deg);
-}
-
-.value-card:nth-child(2) {
-  margin-top: 30px;
-  transform: rotate(-7deg);
-}
-
-.value-card:nth-child(3) {
-  margin-top: 0;
-  transform: rotate(-2deg);
-}
-
-.value-card:nth-child(4) {
-  margin-top: 0;
-  transform: rotate(2deg);
-}
-
-.value-card:nth-child(5) {
-  margin-top: 30px;
-  transform: rotate(7deg);
-}
-
-.value-card:nth-child(6) {
-  margin-top: 100px;
-  transform: rotate(13deg);
-}
-
-/* FLIP MECHANISM */
-
-.value-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.75s cubic-bezier(0.2, 0.75, 0.25, 1);
-}
-
-.value-card:hover .value-card-inner,
-.value-card:focus-within .value-card-inner {
-  transform: rotateY(180deg);
-}
-
-.value-card-face {
-  position: absolute;
-  inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 22px 15px;
-  box-sizing: border-box;
 
   background: rgba(250, 247, 239, 0.94);
-  border: 1px solid rgba(167, 123, 62, 0.35);
-  border-radius: 12px;
+  border: 1px solid rgba(167, 123, 62, 0.25);
+  border-radius: 22px;
 
   box-shadow:
-    0 5px 10px rgba(42, 35, 23, 0.08),
-    0 16px 30px rgba(42, 35, 23, 0.06);
+    0 8px 22px rgba(23, 42, 87, 0.045),
+    0 20px 40px rgba(23, 42, 87, 0.035);
 
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
-/* FRONT */
+/* SUBTLE HOVER ZOOM */
 
-.value-card-front {
-  color: #172A57;
+.value-card:hover {
+  transform: scale(1.025);
+  border-color: rgba(167, 123, 62, 0.65);
+
+  box-shadow:
+    0 15px 35px rgba(23, 42, 87, 0.09),
+    0 25px 50px rgba(23, 42, 87, 0.06);
+
+  z-index: 2;
+}
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.value-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
 }
 
 .value-number {
-  position: absolute;
-  top: 14px;
-  right: 15px;
   color: #A77B3E;
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 20px;
+  font-size: 32px;
+  line-height: 1;
 }
 
 .value-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 66px;
-  height: 66px;
-  margin-bottom: 13px;
+
+  width: 48px;
+  height: 48px;
+
   color: #A77B3E;
+  background: rgba(167, 123, 62, 0.09);
+  border: 1px solid rgba(167, 123, 62, 0.2);
+  border-radius: 50%;
+
   font-family: Georgia, serif;
-  font-size: 49px;
-  line-height: 1;
+  font-size: 29px;
 }
+
+/* ALTERNATING ICON COLOUR */
 
 .value-card:nth-child(even) .value-icon {
   color: #172A57;
+  background: rgba(23, 42, 87, 0.06);
+  border-color: rgba(23, 42, 87, 0.13);
 }
 
-.value-card-front h3,
-.value-card-back h3 {
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.value-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.value-card-content h3 {
   margin: 0;
+
   color: #172A57;
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 20px;
+  font-size: clamp(24px, 2.1vw, 29px);
   font-weight: 400;
-  text-align: center;
+  line-height: 1.2;
 }
 
-.value-card-hint {
-  margin-top: 17px;
-  color: #786B59;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 1.1px;
-}
+/* GOLD DIVIDER */
 
-/* BACK */
-
-.value-card-back {
-  transform: rotateY(180deg);
-  align-items: flex-start;
-  justify-content: center;
-  padding: 30px 20px;
-  text-align: left;
-  background: #172A57;
-  border-color: #A77B3E;
-}
-
-.value-card-back .value-number {
-  color: #F7E6C4;
-}
-
-.value-card-back h3 {
-  margin-bottom: 14px;
-  color: #F7E6C4;
-  font-size: 23px;
-  text-align: left;
-}
-
-.value-card-back p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.91);
-  font-size: 11px;
-  line-height: 1.75;
-}
-
-.value-back-decoration {
-  align-self: flex-end;
-  margin-top: 12px;
-  color: #F7E6C4;
-  font-size: 17px;
-}
-
-/* CENTER LOGO */
-
-.values-center-logo {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  bottom: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 145px;
-  height: 145px;
-  padding: 15px;
-  transform: translateX(-50%);
-  background: rgba(250, 247, 239, 0.95);
-  border: 1px solid rgba(167, 123, 62, 0.35);
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(23, 42, 87, 0.08);
-}
-
-.values-center-logo img {
+.value-card-line {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 48px;
+  height: 2px;
+  margin: 17px 0;
+
+  background: #C29A5B;
 }
 
-/* BOTTOM NOTE */
+/* DESCRIPTION */
+
+.value-card-content p {
+  margin: 0;
+
+  color: #53617C;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+/* =========================================
+   DECORATIVE DETAIL
+========================================= */
+
+.value-card-decoration {
+  position: absolute;
+  right: 20px;
+  bottom: 13px;
+
+  color: rgba(167, 123, 62, 0.12);
+  font-size: 42px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* =========================================
+   BOTTOM NOTE
+========================================= */
 
 .values-bottom-note {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 22px;
+
   width: min(520px, 85%);
-  margin: 25px auto 0;
+  margin: 50px auto 0;
 }
 
 .values-bottom-note span {
@@ -289,50 +239,47 @@
 .values-bottom-note p {
   flex-shrink: 0;
   margin: 0;
+
   color: #786B59;
+  font-family: 'Manrope', sans-serif;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-/* TABLET */
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 1000px) {
   .our-values {
-    padding: 75px 5% 80px;
+    padding: 75px 5% 85px;
   }
 
-  .values-arc {
-    max-width: 760px;
-    min-height: auto;
+  .values-grid {
+    gap: 20px;
   }
 
-  .values-cards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
-    padding: 0;
+  .value-card {
+    min-height: 310px;
+    padding: 25px 22px;
   }
 
-  .value-card,
-  .value-card:nth-child(n) {
-    height: 235px;
-    margin-top: 0;
-    transform: none;
+  .value-card-content h3 {
+    font-size: 25px;
   }
 
-  .values-center-logo {
-    display: none;
-  }
-
-  .values-bottom-note {
-    margin-top: 40px;
+  .value-card-content p {
+    font-size: 12px;
   }
 }
 
-/* MOBILE */
+/* =========================================
+   MOBILE
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .our-values {
     padding: 65px 6% 70px;
   }
@@ -352,39 +299,42 @@
     line-height: 1.8;
   }
 
-  .values-cards {
+  .values-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 15px;
   }
 
-  .value-card,
-  .value-card:nth-child(n) {
-    height: 225px;
+  .value-card {
+    min-height: 300px;
+    padding: 22px 17px;
+    border-radius: 17px;
   }
 
-  .value-card-face {
-    padding: 20px 13px;
+  .value-card-top {
+    margin-bottom: 20px;
   }
 
-  .value-card-back {
-    padding: 26px 15px;
-  }
-
-  .value-card-back h3 {
-    font-size: 20px;
-  }
-
-  .value-card-back p {
-    font-size: 10px;
-    line-height: 1.65;
-  }
-
-  .value-card-front h3 {
-    font-size: 19px;
+  .value-number {
+    font-size: 27px;
   }
 
   .value-icon {
-    font-size: 43px;
+    width: 41px;
+    height: 41px;
+    font-size: 25px;
+  }
+
+  .value-card-content h3 {
+    font-size: 22px;
+  }
+
+  .value-card-content p {
+    font-size: 11px;
+    line-height: 1.75;
+  }
+
+  .value-card-line {
+    margin: 13px 0;
   }
 
   .values-bottom-note {
@@ -398,10 +348,33 @@
   }
 }
 
-/* REDUCED MOTION */
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value-card {
+    min-height: 250px;
+    padding: 25px;
+  }
+
+  .value-card-content h3 {
+    font-size: 25px;
+  }
+
+  .value-card-content p {
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .value-card-inner {
+  .value-card {
     transition: none;
   }
 }

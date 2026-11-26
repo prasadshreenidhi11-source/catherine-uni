@@ -1,157 +1,238 @@
-/* =========================================
-   MINI UTILITY HEADER — SOFT WARM IVORY / LIGHT CREAM
-========================================= */
+
+/* =========================================================
+   CATHERINE MCAULEY SCHOOL
+   MINI UTILITY HEADER — PREMIUM LIGHT GLASSMORPHISM
+========================================================= */
 
 .mini-header {
   position: relative;
   z-index: 50;
   width: 100%;
-  background: #4294e1; /* Elegant soft warm ivory / light cream neutral */
-  border-bottom: 1px solid rgba(13, 30, 56, 0.08);
-  color: #ffffff; /* Deep navy / charcoal */
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Premium navy glassmorphism */
+  background: rgba(11, 29, 57, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(213, 180, 106, 0.28);
+
+  color: #f5f7fc;
+
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+
   font-size: 11.5px;
   line-height: 1;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-}
 
+  box-shadow: 0 4px 18px rgba(5, 18, 38, 0.12);
+}
 .mini-header-inner {
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 8px 5.5%;
+  padding: 9px 5.5%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 
-/* Left & Right clusters */
+/* =========================================================
+   LEFT AND RIGHT GROUPS
+========================================================= */
 
 .mini-header-left,
 .mini-header-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 15px;
 }
 
-/* Thin vertical separator */
+/* =========================================================
+   SEPARATOR
+========================================================= */
 
 .mini-separator {
   width: 1px;
-  height: 13px;
-  background: rgba(15, 36, 62, 0.18);
+  height: 15px;
+  flex-shrink: 0;
+
+  background: rgba(16, 43, 78, 0.17);
   margin: 0 2px;
 }
 
-/* Social Icon Buttons */
+/* =========================================================
+   SOCIAL ICONS
+========================================================= */
 
 .mini-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #0f243e;
-  padding: 3px;
-  border-radius: 2px;
-  transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+
+  color: #173b64;
+
+  padding: 5px;
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .mini-icon-btn:hover {
-  color: #174c3d; /* Heritage green accent */
-  transform: translateY(-1px);
-  opacity: 0.85;
+  color: #ffffff;
+  background: #174d7c;
+  transform: translateY(-2px);
 }
 
-/* Phone link */
+/* =========================================================
+   PHONE LINK
+========================================================= */
 
 .mini-phone-link {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  color: #0f243e;
+  gap: 8px;
+
+  color: #173b64;
   text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  transition: color 0.2s ease;
+
+  font-weight: 700;
+  letter-spacing: 0.25px;
+
+  transition: color 0.25s ease;
 }
 
 .mini-phone-link:hover {
-  color: #174c3d;
+  color: #087fc5;
 }
 
 .mini-phone-icon {
-  color: #174c3d;
+  color: #087fc5;
+  flex-shrink: 0;
 }
 
 .mini-phone-text {
   font-size: 11.5px;
 }
 
-/* Action button (Search) */
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
 
 .mini-action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+
+  padding: 6px 9px;
+
   background: transparent;
-  border: none;
-  color: #0f243e;
+  border: 1px solid transparent;
+  border-radius: 20px;
+
+  color: #173b64;
+
   font-family: inherit;
   font-size: 11.5px;
-  font-weight: 600;
+  font-weight: 700;
+
   cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 2px;
-  transition: color 0.2s ease;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .mini-action-btn:hover {
-  color: #174c3d;
+  color: #087fc5;
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(8, 127, 197, 0.14);
 }
 
 .mini-action-label {
   letter-spacing: 0.2px;
 }
 
-/* Inline Search Input Form */
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
 
 .mini-search-form {
   display: inline-flex;
   align-items: center;
-  background: #ffffff;
-  border: 1px solid rgba(15, 36, 62, 0.2);
-  border-radius: 3px;
-  padding: 2px 6px;
-  gap: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  gap: 6px;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  border: 1px solid rgba(16, 43, 78, 0.14);
+  border-radius: 22px;
+
+  padding: 4px 8px;
+
+  box-shadow: 0 3px 12px rgba(16, 43, 78, 0.06);
+
+  transition: border-color 0.25s ease;
+}
+
+.mini-search-form:focus-within {
+  border-color: rgba(8, 127, 197, 0.55);
 }
 
 .mini-search-input {
+  width: 125px;
+
   background: transparent;
   border: none;
   outline: none;
-  color: #0f243e;
-  font-size: 11px;
+
+  color: #102b4e;
+
   font-family: inherit;
-  width: 120px;
+  font-size: 11px;
 }
 
 .mini-search-input::placeholder {
-  color: rgba(15, 36, 62, 0.5);
+  color: rgba(16, 43, 78, 0.48);
 }
 
 .mini-search-submit,
 .mini-search-close {
-  background: transparent;
-  border: none;
-  color: #0f243e;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  padding: 2px;
-  font-size: 10px;
+  justify-content: center;
+
+  padding: 3px;
+
+  background: transparent;
+  border: none;
+
+  color: #173b64;
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* Language Dropdown Selector */
+.mini-search-submit:hover {
+  color: #087fc5;
+  transform: scale(1.1);
+}
+
+.mini-search-close:hover {
+  color: #d34b4b;
+}
+
+/* =========================================================
+   LANGUAGE SELECTOR
+========================================================= */
 
 .mini-lang-dropdown {
   position: relative;
@@ -160,126 +241,177 @@
 .mini-lang-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  color: #0f243e;
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(16, 43, 78, 0.10);
+  border-radius: 22px;
+
+  color: #173b64;
+
   font-family: inherit;
   font-size: 11.5px;
-  font-weight: 600;
+  font-weight: 700;
+
   cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 2px;
-  transition: background 0.2s ease, color 0.2s ease;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .mini-lang-btn:hover,
 .mini-lang-btn.active {
-  background: rgba(15, 36, 62, 0.06);
-  color: #174c3d;
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(8, 127, 197, 0.25);
+  color: #087fc5;
 }
 
 .mini-globe-icon {
-  color: #174c3d;
+  color: #087fc5;
+  flex-shrink: 0;
 }
 
 .mini-chevron {
-  transition: transform 0.2s ease;
-  color: #0f243e;
+  color: #173b64;
+  transition: transform 0.25s ease;
 }
 
 .mini-chevron.rotate {
   transform: rotate(180deg);
 }
 
-/* Dropdown Menu Panel */
+/* =========================================================
+   LANGUAGE DROPDOWN PANEL
+========================================================= */
 
 .mini-lang-menu {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 10px);
   right: 0;
-  min-width: 210px;
+
+  min-width: 220px;
   max-height: 340px;
+
   overflow-y: auto;
-  background: #ffffff;
-  border: 1px solid rgba(15, 36, 62, 0.15);
-  border-radius: 4px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(16, 43, 78, 0.10);
+  border-radius: 12px;
+
+  box-shadow:
+    0 14px 35px rgba(16, 43, 78, 0.13),
+    0 3px 10px rgba(16, 43, 78, 0.05);
+
   list-style: none;
-  padding: 6px 0;
+  padding: 7px;
   margin: 0;
+
   z-index: 200;
+
   scrollbar-width: thin;
-  scrollbar-color: rgba(15, 36, 62, 0.2) transparent;
+  scrollbar-color: rgba(16, 43, 78, 0.22) transparent;
 }
 
 .mini-lang-item {
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 9px 14px;
+
+  padding: 10px 12px;
+
   background: transparent;
   border: none;
-  color: #1a2b3c;
+  border-radius: 7px;
+
+  color: #173b64;
+
   font-family: inherit;
   font-size: 12px;
   text-align: left;
+
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .mini-lang-item:hover {
-  background: #f0ede4;
-  color: #10382e;
+  background: #eaf5fc;
+  color: #087fc5;
 }
 
 .mini-lang-item.selected {
-  background: #e6ede8;
-  color: #10382e;
+  background: #e4f2fb;
+  color: #075d91;
   font-weight: 700;
 }
 
 .mini-lang-name {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .mini-lang-native {
   font-size: 10.5px;
-  color: #55697d;
+  color: #6b7f94;
   margin-left: auto;
 }
 
 .mini-check-icon {
-  color: #174c3d;
+  color: #087fc5;
   margin-left: 6px;
+  flex-shrink: 0;
 }
 
-/* =========================================
-   RESPONSIVE DESIGN (MINI HEADER)
-========================================= */
+/* =========================================================
+   TABLET RESPONSIVE
+========================================================= */
 
 @media (max-width: 768px) {
   .mini-header-inner {
-    padding: 7px 4.5%;
-    gap: 8px;
-  }
-
-  .mini-header-left {
+    padding: 9px 4%;
     gap: 10px;
   }
 
+  .mini-header-left,
   .mini-header-right {
-    gap: 8px;
+    gap: 9px;
   }
 
   .mini-phone-text {
     font-size: 10.5px;
   }
+
+  .mini-lang-btn {
+    padding: 6px 9px;
+  }
 }
 
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
+
 @media (max-width: 520px) {
+  .mini-header-inner {
+    padding: 9px 4%;
+    gap: 7px;
+  }
+
+  .mini-header-left,
+  .mini-header-right {
+    gap: 7px;
+  }
+
   .mini-icon-btn {
     display: none;
   }
@@ -292,12 +424,479 @@
     display: none;
   }
 
+  .mini-action-btn {
+    padding: 6px;
+  }
+
+  .mini-phone-link {
+    gap: 5px;
+  }
+
   .mini-phone-text {
-    font-size: 11px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .mini-lang-btn {
+    gap: 5px;
+    padding: 6px 8px;
+    font-size: 10px;
   }
 
   .mini-lang-menu {
-    right: -10px;
-    min-width: 190px;
+    right: -5px;
+    min-width: 195px;
+  }
+
+  .mini-search-input {
+    width: 90px;
+  }
+
+  .mini-separator {
+    height: 13px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .mini-header-inner {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .mini-phone-text {
+    font-size: 9px;
+  }
+
+  .mini-header-left,
+  .mini-header-right {
+    gap: 5px;
+  }
+
+  .mini-lang-btn {
+    padding: 6px;
+  }
+
+  .mini-lang-label {
+    max-width: 85px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* =========================================
+   MINI HEADER — DARK NAVY COLOUR CORRECTION
+========================================= */
+
+.mini-header {
+  background: rgba(13, 35, 65, 0.94);
+  border-bottom: 1px solid rgba(210, 176, 105, 0.35);
+  color: #ffffff;
+}
+
+/* Social icons */
+.mini-icon-btn {
+  color: #f4f6fa;
+}
+
+.mini-icon-btn:hover {
+  color: #e0bd78;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Separators */
+.mini-separator {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Phone */
+.mini-phone-link {
+  color: #f4f6fa;
+}
+
+.mini-phone-icon {
+  color: #dfbd7b;
+}
+
+.mini-phone-link:hover {
+  color: #dfbd7b;
+}
+
+/* Search */
+.mini-action-btn {
+  color: #f4f6fa;
+}
+
+.mini-action-btn svg {
+  color: #dfbd7b;
+}
+
+.mini-action-btn:hover {
+  color: #dfbd7b;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mini-search-form {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.mini-search-input {
+  color: #ffffff;
+}
+
+.mini-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.mini-search-submit,
+.mini-search-close {
+  color: #ffffff;
+}
+
+/* Language selector — remove grey appearance */
+.mini-lang-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  color: #ffffff;
+}
+
+.mini-lang-btn:hover,
+.mini-lang-btn.active {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(223, 189, 123, 0.55);
+  color: #dfbd7b;
+}
+
+.mini-globe-icon,
+.mini-chevron {
+  color: #dfbd7b;
+}
+
+/* Language dropdown */
+.mini-lang-menu {
+  background: #102b4e;
+  border-color: rgba(223, 189, 123, 0.25);
+}
+
+.mini-lang-item {
+  color: #f4f6fa;
+}
+
+.mini-lang-item:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: #dfbd7b;
+}
+
+.mini-lang-item.selected {
+  background: rgba(223, 189, 123, 0.15);
+  color: #e8c989;
+}
+
+.mini-lang-native {
+  color: #bdc9d8;
+}
+
+.mini-check-icon {
+  color: #dfbd7b;
+}
+
+/* =========================================================
+   SCHOOL WEBSITE SEARCH PANEL
+========================================================= */
+
+.mini-header {
+  position: relative;
+  overflow: visible;
+}
+
+.mini-header-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Search button active state */
+
+.mini-action-btn.active {
+  color: #dfbd7b;
+}
+
+/* Main floating panel */
+
+.school-search-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 5.5%;
+
+  width: min(520px, calc(100vw - 36px));
+  max-height: min(580px, calc(100vh - 110px));
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+  color: #172b50;
+
+  border: 1px solid rgba(20, 44, 83, 0.07);
+  border-radius: 21px;
+
+  box-shadow:
+    0 20px 55px rgba(13, 35, 65, 0.20),
+    0 5px 15px rgba(13, 35, 65, 0.06);
+
+  overflow: hidden;
+  z-index: 500;
+
+  animation: schoolSearchAppear 0.22s ease-out;
+}
+
+@keyframes schoolSearchAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Search input */
+
+.school-search-form {
+  min-height: 76px;
+  padding: 0 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  border-bottom: 1px solid #e8edf5;
+  background: #ffffff;
+}
+
+.school-search-icon {
+  flex-shrink: 0;
+  color: #53658b;
+}
+
+.school-search-form input {
+  flex: 1;
+  min-width: 0;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: #182d56;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.school-search-form input::placeholder {
+  color: #929bb2;
+}
+
+.school-search-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+
+  color: #71809a;
+  cursor: pointer;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.school-search-clear:hover {
+  background: #edf2fa;
+  color: #172b50;
+}
+
+/* Search content */
+
+.school-search-content {
+  padding: 20px 10px 13px;
+  overflow-y: auto;
+}
+
+.school-search-heading {
+  padding: 0 10px 13px;
+
+  color: #8792ad;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.4px;
+}
+
+/* Results */
+
+.school-search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.school-search-result {
+  width: 100%;
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding: 13px 15px;
+
+  background: transparent;
+  border: none;
+  border-radius: 15px;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.school-search-result:hover {
+  background: #eaf0fb;
+}
+
+.school-search-result:active {
+  transform: scale(0.99);
+}
+
+.school-search-result-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.school-search-result-title {
+  color: #192e5b;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.school-search-result-category {
+  color: #637294;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.school-search-result-arrow {
+  flex-shrink: 0;
+  color: #bd3543;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.school-search-result:hover .school-search-result-arrow {
+  color: #173b70;
+  transform: translate(2px, -2px);
+}
+
+/* Empty search state */
+
+.school-search-empty {
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #8190aa;
+  text-align: center;
+  gap: 7px;
+}
+
+.school-search-empty p {
+  margin: 5px 0 0;
+  color: #1b315c;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.school-search-empty span {
+  font-size: 12px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .school-search-panel {
+    top: calc(100% + 8px);
+    right: 12px;
+
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 100px);
+
+    border-radius: 17px;
+  }
+
+  .school-search-form {
+    min-height: 65px;
+    padding: 0 17px;
+    gap: 11px;
+  }
+
+  .school-search-form input {
+    font-size: 14px;
+  }
+
+  .school-search-content {
+    padding: 16px 8px 10px;
+  }
+
+  .school-search-result {
+    min-height: 66px;
+    padding: 11px 12px;
+  }
+
+  .school-search-result-title {
+    font-size: 14px;
+  }
+
+  .school-search-result-category {
+    font-size: 12px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .school-search-panel {
+    animation: none;
+  }
+
+  .school-search-result,
+  .school-search-result-arrow {
+    transition: none;
   }
 }

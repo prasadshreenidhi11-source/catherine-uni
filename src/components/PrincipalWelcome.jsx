@@ -6,7 +6,7 @@ function PrincipalWelcome() {
   const { translate } = useTranslation()
 
   return (
-    <section className="principal-welcome" id="about">
+   <section className="principal-welcome" id="principal-welcome">
       <div className="principal-welcome-inner">
 
         <div className="principal-video-column">

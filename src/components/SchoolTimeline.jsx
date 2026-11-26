@@ -82,11 +82,11 @@ function SchoolTimeline() {
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className={`school-timeline ${isVisible ? 'timeline-visible' : ''}`}
-      id="school-history"
-    >
+   <section
+  ref={sectionRef}
+  className={`school-timeline ${isVisible ? 'timeline-visible' : ''}`}
+  id="school-timeline"
+>
       <div className="school-timeline-inner">
 
         {/* SECTION HEADING */}

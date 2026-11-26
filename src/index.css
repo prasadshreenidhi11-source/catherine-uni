@@ -65,3 +65,18 @@ video {
   background: #174c3d;
   color: white;
 }
+/* Smooth navigation from website search */
+
+html {
+  scroll-behavior: smooth;
+}
+
+#principal-welcome,
+#school-timeline,
+#teaching-learning,
+#news-stories,
+#our-values,
+#visit-us,
+#weather-report {
+  scroll-margin-top: 110px;
+}

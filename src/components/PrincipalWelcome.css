@@ -7,7 +7,7 @@
 .principal-welcome {
   position: relative;
   width: 100%;
-  padding: 0;
+   padding: 100px 0 0;
   overflow: hidden;
   box-sizing: border-box;
 
@@ -44,7 +44,7 @@
 .principal-video-column {
   width: 100%;
   min-width: 0;
-  padding: 60px 0 35px 5%;
+   padding: 0 5% 45px 7%;
   box-sizing: border-box;
 }
 
@@ -302,7 +302,7 @@
   }
 
   .principal-video-column {
-    padding: 25px 5% 0;
+    padding: 55px;
   }
 
   .principal-video-frame {

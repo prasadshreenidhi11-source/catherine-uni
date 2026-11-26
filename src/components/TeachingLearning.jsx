@@ -49,7 +49,7 @@ function TeachingLearning() {
   const { translate } = useTranslation()
 
   return (
-    <section className="teaching-learning" id="learning">
+    <section id="teaching-learning" className="teaching-learning">
       <div className="teaching-learning-inner">
 
         {/* SECTION INTRODUCTION */}
