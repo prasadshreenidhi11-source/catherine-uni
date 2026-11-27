@@ -7,7 +7,7 @@
 .teaching-learning {
     position: relative;
   width: 100%;
-  padding: 35px 0 95px;
+  padding: var(--section-y) 0;
   overflow: hidden;
   box-sizing: border-box;
   background: transparent;
@@ -33,7 +33,7 @@
   margin-bottom: 22px;
 
   color: #786B59;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 3px;
 }
@@ -43,7 +43,7 @@
 
   color: #172A57;
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: clamp(42px, 5vw, 68px);
+  font-size: var(--fs-h2);
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: -2px;
@@ -59,7 +59,7 @@
   margin: 24px auto 0;
 
   color: #354563;
-  font-size: 15px;
+  font-size: var(--fs-lead);
   line-height: 1.9;
 }
 
@@ -188,7 +188,7 @@
   background: #F7E6C4;
   border-radius: 50%;
 
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.5px;
 }
@@ -241,7 +241,7 @@
   margin-bottom: 11px;
 
   color: #A77B3E;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 1.6px;
   text-transform: uppercase;
@@ -261,7 +261,7 @@
   margin: 0;
 
   color: #354563;
-  font-size: 15px;
+  font-size: var(--fs-body);
   line-height: 1.8;
 }
 
@@ -301,7 +301,7 @@
   margin: 0;
 
   color: #786B59;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.8px;
   text-transform: uppercase;
@@ -319,7 +319,7 @@
 
 @media (max-width: 900px) {
   .teaching-learning {
-      padding: 30px 0 75px;
+      
   }
 
   .teaching-learning-heading {
@@ -350,7 +350,7 @@
 
 @media (max-width: 600px) {
   .teaching-learning {
-  padding: 25px 0 65px;
+  
   }
 
   .teaching-learning-heading {
@@ -360,13 +360,13 @@
   }
 
   .teaching-learning-heading h2 {
-    font-size: clamp(38px, 9vw, 50px);
+    
     letter-spacing: -1.5px;
   }
 
   .teaching-learning-heading > p {
     margin-top: 18px;
-    font-size: 14px;
+    
     line-height: 1.8;
   }
 
@@ -394,7 +394,7 @@
   }
 
   .learning-card-content p {
-    font-size: 12px;
+    
   }
 
   .learning-marquee-track {
@@ -407,7 +407,7 @@
   }
 
   .learning-bottom-note p {
-    font-size: 8px;
+    font-size: 11px;
     letter-spacing: 1px;
   }
 }

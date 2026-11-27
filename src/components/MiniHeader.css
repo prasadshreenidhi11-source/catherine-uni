@@ -900,3 +900,17 @@
     transition: none;
   }
 }
+
+/* Pinned to the top so the language selector is reachable from any section */
+.mini-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.mini-header-spacer {
+  position: relative;
+  flex: none;
+  width: 100%;
+}

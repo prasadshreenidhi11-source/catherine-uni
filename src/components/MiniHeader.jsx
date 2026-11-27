@@ -1,5 +1,6 @@
 
 import { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import {
   Phone,
   Search,
@@ -88,6 +89,18 @@ const searchSections = [
     category: 'Contact & Location',
     id: 'visit-us',
     keywords: 'visit location address directions'
+  },
+  {
+    title: 'Enrolment',
+    category: 'Join Our School',
+    id: 'enrolment',
+    keywords: 'enrolment enrol enrollment apply prospectus reception transition'
+  },
+  {
+    title: 'Contact Us',
+    category: 'Contact & Location',
+    id: 'contact',
+    keywords: 'contact phone email enquiry'
   },
   {
     title: 'Weather Report',
@@ -216,8 +229,23 @@ export default function MiniHeader() {
     }
   }
 
-  return (
-    <div className="mini-header" role="region" aria-label="Utility Header">
+  // The bar is pinned to the screen, so it is rendered outside #root (the hero
+  // would otherwise trap it) and a spacer keeps its place at the top of the hero.
+  const barRef = useRef(null)
+  const [barHeight, setBarHeight] = useState(48)
+
+  useEffect(() => {
+    const bar = barRef.current
+    if (!bar) return
+
+    const observer = new ResizeObserver(() => setBarHeight(bar.offsetHeight))
+    observer.observe(bar)
+
+    return () => observer.disconnect()
+  }, [])
+
+  const bar = (
+    <div ref={barRef} className="mini-header" role="region" aria-label="Utility Header">
 
       <div className="mini-header-inner">
 
@@ -290,7 +318,7 @@ export default function MiniHeader() {
           <span className="mini-separator" aria-hidden="true" />
 
           {/* LANGUAGE SELECTOR */}
-          <div className="mini-lang-dropdown" ref={dropdownRef}>
+          <div className="mini-lang-dropdown notranslate" translate="no" ref={dropdownRef}>
 
             <button
               type="button"
@@ -451,5 +479,12 @@ export default function MiniHeader() {
       )}
 
     </div>
+  )
+
+  return (
+    <>
+      <div className="mini-header-spacer" style={{ height: barHeight }} />
+      {createPortal(bar, document.getElementById('utility-bar') || document.body)}
+    </>
   )
 }

@@ -7,7 +7,7 @@
 .our-values {
   position: relative;
   width: 100%;
-  padding: 4px 5% 100px;
+  padding: var(--section-y) var(--gutter);
   overflow: hidden;
   box-sizing: border-box;
   background: transparent;
@@ -34,7 +34,7 @@
   margin-bottom: 18px;
   color: #786B59;
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 3px;
 }
@@ -43,7 +43,7 @@
   margin: 0;
   color: #172A57;
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: clamp(42px, 5vw, 66px);
+  font-size: var(--fs-h2);
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: -2px;
@@ -59,7 +59,7 @@
   margin: 20px auto 0;
   color: #354563;
   font-family: 'Manrope', sans-serif;
-  font-size: 15px;
+  font-size: var(--fs-lead);
   line-height: 1.9;
 }
 
@@ -196,7 +196,7 @@
 
   color: #53617C;
   font-family: 'Manrope', sans-serif;
-  font-size: 15px;
+  font-size: var(--fs-body);
   font-weight: 400;
   line-height: 1.85;
 }
@@ -242,7 +242,7 @@
 
   color: #786B59;
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -254,7 +254,7 @@
 
 @media (max-width: 1000px) {
   .our-values {
-    padding: 75px 5% 85px;
+    
   }
 
   .values-grid {
@@ -271,7 +271,7 @@
   }
 
   .value-card-content p {
-    font-size: 12px;
+    
   }
 }
 
@@ -281,7 +281,7 @@
 
 @media (max-width: 650px) {
   .our-values {
-    padding: 65px 6% 70px;
+    
   }
 
   .our-values-heading {
@@ -290,12 +290,12 @@
   }
 
   .our-values-heading h2 {
-    font-size: clamp(38px, 9vw, 48px);
+    
     letter-spacing: -1.5px;
   }
 
   .our-values-heading > p {
-    font-size: 14px;
+    
     line-height: 1.8;
   }
 
@@ -329,7 +329,7 @@
   }
 
   .value-card-content p {
-    font-size: 11px;
+    
     line-height: 1.75;
   }
 
@@ -343,14 +343,14 @@
   }
 
   .values-bottom-note p {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 1.2px;
   }
 }
 
 /* SMALL MOBILE */
 
-@media (max-width: 380px) {
+@media (max-width: 600px) {
   .values-grid {
     grid-template-columns: 1fr;
   }
@@ -365,7 +365,7 @@
   }
 
   .value-card-content p {
-    font-size: 13px;
+    
   }
 }
 

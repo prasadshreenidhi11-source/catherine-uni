@@ -5,7 +5,7 @@ function Acknowledgement() {
   const { translate } = useTranslation()
 
   return (
-    <section className="acknowledgement-section">
+    <section className="acknowledgement-section" id="acknowledgement">
 
       <div className="acknowledgement-content">
 

@@ -11,12 +11,9 @@ import VisitUs from './components/VisitUs'
 import Acknowledgement from './components/Acknowledgement'
 import Footer from './components/Footer'
 import { TranslationProvider } from './context/TranslationContext'
-import { useTranslation } from './context/useTranslation'
 import './App.css'
 
 function MainContent() {
-  const { translate } = useTranslation()
-
   return (
     <main>
       <HeroSection />

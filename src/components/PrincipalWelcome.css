@@ -7,7 +7,7 @@
 .principal-welcome {
   position: relative;
   width: 100%;
-   padding: 100px 0 0;
+   padding: var(--section-y) 0 0;
   overflow: hidden;
   box-sizing: border-box;
 
@@ -88,7 +88,7 @@
   margin-bottom: 22px;
 
   color: #786B59;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
@@ -102,7 +102,7 @@
   color: #172A57;
 
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(43px, 4.5vw, 76px);
+  font-size: var(--fs-h2);
   font-weight: 700;
 
   line-height: 0.99;
@@ -117,7 +117,7 @@
 
   color: #354563;
 
-  font-size: clamp(15px, 1.2vw, 19px);
+  font-size: var(--fs-lead);
   font-weight: 400;
 
   line-height: 1.85;
@@ -273,13 +273,13 @@
   }
 
   .principal-heading {
-    font-size: clamp(40px, 5vw, 56px);
+    
     letter-spacing: -2px;
   }
 
   .principal-description {
     margin-bottom: 45px;
-    font-size: 15px;
+    
   }
 
   .principal-quote {
@@ -302,7 +302,7 @@
   }
 
   .principal-video-column {
-    padding: 55px;
+    padding: 0 var(--gutter);
   }
 
   .principal-video-frame {
@@ -313,29 +313,29 @@
 
   .principal-content-column {
     max-width: 100%;
-    padding: 45px 7% 55px;
+    padding: 32px var(--gutter) var(--section-y);
   }
 
   .principal-eyebrow {
     margin-bottom: 18px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .principal-heading {
-    font-size: clamp(43px, 10vw, 60px);
+    
     line-height: 1.03;
     letter-spacing: -2px;
   }
 
   .principal-description {
     margin-bottom: 45px;
-    font-size: 15px;
+    
     line-height: 1.8;
   }
 
   .principal-quote {
     padding: 38px 25px 28px;
-    border-radius: 24px 24px 0 0;
+    border-radius: 24px;
   }
 
   .principal-quote-text {
@@ -362,7 +362,7 @@
 
 @media (max-width: 380px) {
   .principal-heading {
-    font-size: 40px;
+    
   }
 
   .principal-quote {

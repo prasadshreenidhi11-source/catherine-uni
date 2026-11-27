@@ -2,10 +2,10 @@
    VISIT US SECTION
 ========================================== */
 
-.visit-us-section {
+.visit-us {
   position: relative;
   width: 100%;
-  padding: 65px 5% 100px;
+  padding: var(--section-y) var(--gutter);
   background: transparent;
   overflow: hidden;
 }
@@ -34,7 +34,7 @@
   border-radius: 50px;
 }
 
-.visit-us-section:hover .visit-hero-image {
+.visit-us:hover .visit-hero-image {
   transform: scale(1.025);
 }
 
@@ -64,7 +64,7 @@
   backdrop-filter: blur(12px);
   color: #fff;
   font-family: 'Manrope', sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 2px;
 }
@@ -113,7 +113,7 @@
   gap: 14px;
   color: #a77b3e;
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 3px;
   margin-bottom: 23px;
@@ -129,7 +129,7 @@
 .visit-content-left h2 {
   color: #172a57;
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(42px, 5vw, 68px);
+  font-size: var(--fs-h2);
   font-weight: 400;
   line-height: 1.04;
   letter-spacing: -1.5px;
@@ -146,7 +146,7 @@
   max-width: 590px;
   color: #52617e;
   font-family: 'Manrope', sans-serif;
-  font-size: 15px;
+  font-size: var(--fs-lead);
   line-height: 1.95;
   margin: 27px 0 32px;
 }
@@ -204,7 +204,8 @@
   display: flex;
   align-items: center;
   flex: 1;
-  min-width: 0;
+  /* Drops below the button instead of squeezing the labels */
+  min-width: min(100%, 340px);
 }
 
 .visit-feature {
@@ -215,7 +216,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 5px 13px;
+  padding: 5px 6px;
   border-left: 1px solid rgba(167, 123, 62, 0.45);
   color: #a77b3e;
   text-align: center;
@@ -226,7 +227,7 @@
   flex-direction: column;
   color: #172a57;
   font-family: 'Manrope', sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
   font-weight: 700;
 }
@@ -276,7 +277,7 @@
 .visit-location-label {
   color: #a77b3e;
   font-family: 'Manrope', sans-serif;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
   margin-bottom: 10px;
@@ -294,7 +295,7 @@
 .visit-location-info p {
   color: #52617e;
   font-family: 'Manrope', sans-serif;
-  font-size: 12px;
+  font-size: var(--fs-body);
   line-height: 1.8;
   margin: 0;
 }
@@ -315,7 +316,7 @@
   background: #172a57;
   color: #fff;
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
@@ -366,9 +367,9 @@
 ========================================== */
 
 @media (max-width: 1100px) {
-  .visit-us-section {
-    padding-left: 4%;
-    padding-right: 4%;
+  .visit-us {
+    
+    
   }
 
   .visit-content-panel {
@@ -378,7 +379,7 @@
   }
 
   .visit-content-left h2 {
-    font-size: 58px;
+    
   }
 
   .visit-location-card {
@@ -391,8 +392,8 @@
 ========================================== */
 
 @media (max-width: 600px) {
-  .visit-us-section {
-    padding: 45px 15px 65px;
+  .visit-us {
+    
   }
 
   .visit-visual {
@@ -407,7 +408,7 @@
   .visit-image-label {
     top: 15px;
     left: 15px;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .visit-content-panel {
@@ -419,12 +420,12 @@
   }
 
   .visit-content-left h2 {
-    font-size: clamp(39px, 10vw, 49px);
+    
     letter-spacing: -1px;
   }
 
   .visit-description {
-    font-size: 13px;
+    
     line-height: 1.8;
     margin: 20px 0 25px;
   }
@@ -443,7 +444,7 @@
   }
 
   .visit-feature div {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .visit-location-card {
@@ -469,9 +470,9 @@
 ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .visit-us-section *,
-  .visit-us-section *::before,
-  .visit-us-section *::after {
+  .visit-us *,
+  .visit-us *::before,
+  .visit-us *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }

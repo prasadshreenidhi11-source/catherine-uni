@@ -1,20 +1,16 @@
 import { useEffect, useState, useMemo, useCallback } from 'react'
-import { SUPPORTED_LANGUAGES, FALLBACK_DICTIONARY } from './translationConstants'
+import { loadGoogleTranslate, saveTranslateCookie } from './googleTranslate'
+import { SUPPORTED_LANGUAGES } from './translationConstants'
 import { TranslationContext } from './translationInstance'
 
 export function TranslationProvider({ children }) {
-  const [currentLanguage, setCurrentLanguage] = useState(() => {
+  const [currentLanguage] = useState(() => {
     try {
       return localStorage.getItem('cms_selected_language') || 'en'
     } catch {
       return 'en'
     }
   })
-
-  // Dynamic live cache for text translated via Google Cloud API endpoint
-  const [dynamicCache, setDynamicCache] = useState({})
-  const [isTranslating, setIsTranslating] = useState(false)
-  const [error, setError] = useState(null)
 
   // Save selection across page navigations / reloads
   useEffect(() => {
@@ -30,90 +26,38 @@ export function TranslationProvider({ children }) {
     } else {
       document.documentElement.dir = 'ltr'
     }
-    document.documentElement.lang = currentLanguage
+    // lang stays "en" (the source language); Google updates it once translated
   }, [currentLanguage])
 
-  // Synchronous translation lookup function with fallback
-  const translate = useCallback((text) => {
-    if (!text || typeof text !== 'string') return text
-    if (currentLanguage === 'en') return text
+  // Google translates the rendered page, so components keep their English text.
+  // Translating here as well would hand Google text that is no longer English.
+  const translate = useCallback((text) => text, [])
 
-    // 1. Check live Google Cloud dynamic cache
-    const cacheKey = `${currentLanguage}:${text}`
-    if (dynamicCache[cacheKey]) {
-      return dynamicCache[cacheKey]
+  useEffect(() => {
+    saveTranslateCookie(currentLanguage)
+    if (currentLanguage !== 'en') {
+      loadGoogleTranslate(
+        SUPPORTED_LANGUAGES.map((l) => l.code).filter((code) => code !== 'en')
+      )
     }
-
-    // 2. Check local high-fidelity dictionary
-    const dict = FALLBACK_DICTIONARY[currentLanguage]
-    if (dict && dict[text]) {
-      return dict[text]
-    }
-
-    return text
-  }, [currentLanguage, dynamicCache])
-
-  // Batch translate any new or uncached texts from the backend Google Cloud endpoint
-  const translateBatch = useCallback(async (textArray) => {
-    if (!textArray || textArray.length === 0 || currentLanguage === 'en') return
-
-    const uncached = textArray.filter(t => {
-      const cacheKey = `${currentLanguage}:${t}`
-      const hasDynamic = !!dynamicCache[cacheKey]
-      const hasStatic = !!FALLBACK_DICTIONARY[currentLanguage]?.[t]
-      return !hasDynamic && !hasStatic
-    })
-
-    if (uncached.length === 0) return
-
-    setIsTranslating(true)
-    setError(null)
-
-    try {
-      const response = await fetch('/api/translate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          texts: uncached,
-          targetLang: currentLanguage,
-          sourceLang: 'en'
-        })
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        if (data.translations && Array.isArray(data.translations)) {
-          setDynamicCache(prev => {
-            const next = { ...prev }
-            uncached.forEach((original, idx) => {
-              const translated = data.translations[idx]
-              if (translated) {
-                next[`${currentLanguage}:${original}`] = translated
-              }
-            })
-            return next
-          })
-        }
-      }
-    } catch (err) {
-      console.warn('Google Translation API request failed:', err.message)
-      setError(err.message)
-    } finally {
-      setIsTranslating(false)
-    }
-  }, [currentLanguage, dynamicCache])
+  }, [currentLanguage])
 
   const value = useMemo(() => ({
     currentLanguage,
-    setLanguage: (lang) => {
-      setCurrentLanguage(lang)
+    // A reload is the reliable way to switch or restore a translated page
+    setLanguage: (language) => {
+      if (language === currentLanguage) return
+      try {
+        localStorage.setItem('cms_selected_language', language)
+      } catch {
+        // Ignore localStorage errors
+      }
+      saveTranslateCookie(language)
+      window.location.reload()
     },
     translate,
-    translateBatch,
-    isTranslating,
-    error,
     languages: SUPPORTED_LANGUAGES,
-  }), [currentLanguage, translate, translateBatch, isTranslating, error])
+  }), [currentLanguage, translate])
 
   return (
     <TranslationContext.Provider value={value}>

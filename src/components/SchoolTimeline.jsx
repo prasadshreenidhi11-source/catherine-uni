@@ -14,7 +14,7 @@ const timelineItems = [
     detail:
       'This marks an important part of the story behind Catherine McAuley School. Inspired by the Mercy tradition, a commitment to education, service and community continues to shape our identity.',
     link: 'Discover our school',
-    target: '#about',
+    target: '#principal-welcome',
   },
   {
     id: '1996',
@@ -26,7 +26,7 @@ const timelineItems = [
     detail:
       'The opening of Catherine McAuley School in Craigmore marks an important milestone in our journey. It brings the school community together around a shared commitment to learning, faith and opportunity.',
     link: 'Discover our school',
-    target: '#about',
+    target: '#principal-welcome',
   },
   {
     id: 'r6',
@@ -50,13 +50,14 @@ const timelineItems = [
     detail:
       'Our Mini Macs program provides opportunities for young children to experience playgroups and early years learning. It is open to all eligible children and their families.',
     link: 'Discover Mini Macs',
-    target: '#community',
+    target: '#news-stories',
   },
 ]
 
 function SchoolTimeline() {
   const { translate } = useTranslation()
   const sectionRef = useRef(null)
+  const touchStart = useRef(null)
 
   const [activeItem, setActiveItem] = useState(timelineItems[0])
   const [isVisible, setIsVisible] = useState(false)
@@ -80,6 +81,28 @@ function SchoolTimeline() {
 
     return () => observer.disconnect()
   }, [])
+
+  const step = (offset) => {
+    const index = timelineItems.findIndex((item) => item.id === activeItem.id)
+    const next = (index + offset + timelineItems.length) % timelineItems.length
+    setActiveItem(timelineItems[next])
+    return next
+  }
+
+  const handleTabKeys = (event) => {
+    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return
+    event.preventDefault()
+    const next = step(event.key === 'ArrowRight' ? 1 : -1)
+    event.currentTarget.children[next].focus()
+  }
+
+  const handleSwipe = (event) => {
+    if (!touchStart.current) return
+    const dx = event.changedTouches[0].clientX - touchStart.current.x
+    const dy = event.changedTouches[0].clientY - touchStart.current.y
+    touchStart.current = null
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1)
+  }
 
   return (
    <section
@@ -108,100 +131,77 @@ function SchoolTimeline() {
           </p>
         </div>
 
-        {/* MAIN INTERACTIVE AREA */}
-        <div className="school-timeline-content">
+        {/* STORY CARD */}
+        <div className="ourstory-card">
 
-          {/* LEFT: FOUR POINTS AND CENTRAL LOGO */}
-          <div className="timeline-visual">
-
-            <div className="timeline-logo">
-              <img
-                src="/images/logo.png"
-                alt="Catherine McAuley School"
-              />
-            </div>
-
-            {timelineItems.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                className={`timeline-point timeline-point-${index + 1} ${
-                  activeItem.id === item.id ? 'active' : ''
-                }`}
-                onMouseEnter={() => setActiveItem(item)}
-                onFocus={() => setActiveItem(item)}
-                onClick={() => setActiveItem(item)}
-                aria-pressed={activeItem.id === item.id}
-              >
-                <span className="timeline-point-number">
-                  {item.number}
-                </span>
-
-                <span className="timeline-point-label">
-                  {translate(item.label)}
-                </span>
-
-                <span className="timeline-point-arrow">↗</span>
-              </button>
-            ))}
-
-          </div>
-
-          {/* RIGHT: DETAILED INFORMATION */}
-          <div className="timeline-description-panel">
-
-            <span className="timeline-panel-eyebrow">
+          <div className="ourstory-top">
+            <span className="ourstory-eyebrow">
               {translate('DISCOVER OUR STORY')}
             </span>
 
-            <div className="timeline-panel-content" key={activeItem.id}>
+            <div className="ourstory-tabs" role="tablist" onKeyDown={handleTabKeys}>
+              {timelineItems.map((item) => {
+                const selected = activeItem.id === item.id
 
-              <span className="timeline-panel-number">
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    role="tab"
+                    id={`ourstory-tab-${item.id}`}
+                    aria-selected={selected}
+                    aria-controls="ourstory-panel"
+                    tabIndex={selected ? 0 : -1}
+                    className={`ourstory-tab ${selected ? 'active' : ''}`}
+                    onClick={() => setActiveItem(item)}
+                  >
+                    <span className="ourstory-tab-number">{item.number}</span>
+                    <span className="ourstory-tab-label">{translate(item.label)}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          <div
+            className="ourstory-panel"
+            id="ourstory-panel"
+            role="tabpanel"
+            aria-labelledby={`ourstory-tab-${activeItem.id}`}
+            onTouchStart={(event) => {
+              touchStart.current = {
+                x: event.touches[0].clientX,
+                y: event.touches[0].clientY,
+              }
+            }}
+            onTouchEnd={handleSwipe}
+          >
+            <div className="ourstory-mark">
+              <span className="ourstory-year" key={activeItem.id}>
                 {activeItem.number}
               </span>
 
-              <span className="timeline-panel-category">
+              <span className="ourstory-crest">
+                <img src="/images/logo.webp" alt="Catherine McAuley School" loading="lazy" decoding="async" />
+              </span>
+            </div>
+
+            <div className="ourstory-copy" key={activeItem.id}>
+              <span className="ourstory-category">
                 {translate(activeItem.label)}
               </span>
 
-              <h3 className="timeline-panel-heading">
-                {translate(activeItem.title)}
-              </h3>
+              <h3>{translate(activeItem.title)}</h3>
 
-              <p className="timeline-panel-description">
-                {translate(activeItem.description)}
-              </p>
+              <p className="ourstory-lead">{translate(activeItem.description)}</p>
 
-              <p className="timeline-panel-detail">
-                {translate(activeItem.detail)}
-              </p>
+              <p className="ourstory-detail">{translate(activeItem.detail)}</p>
 
-              <a
-                href={activeItem.target}
-                className="timeline-panel-link"
-              >
+              <a href={activeItem.target} className="ourstory-link">
                 {translate(activeItem.link)}
-                <span>↗</span>
+                <span aria-hidden="true">→</span>
               </a>
-
             </div>
-
-            {/* NAVIGATION INDICATORS */}
-            <div className="timeline-panel-indicator">
-              {timelineItems.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className={`timeline-indicator ${
-                    activeItem.id === item.id ? 'active' : ''
-                  }`}
-                  onClick={() => setActiveItem(item)}
-                  aria-label={`Show ${item.number} information`}
-                  aria-pressed={activeItem.id === item.id}
-                />
-              ))}
-            </div>
-
           </div>
 
         </div>

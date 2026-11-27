@@ -1,6 +1,7 @@
 import { ArrowRight, Phone } from 'lucide-react'
 
 import { useTranslation } from '../context/useTranslation'
+import { emailSchool } from '../siteLinks'
 import './Footer.css'
 
 function Footer() {
@@ -10,36 +11,36 @@ function Footer() {
     {
       title: 'Our School',
       links: [
-        { label: "Principal's Welcome", href: '#principal' },
+        { label: "Principal's Welcome", href: '#principal-welcome' },
         { label: 'Kaurna Acknowledgement', href: '#acknowledgement' },
-        { label: 'Our History', href: '#history' },
-        { label: 'Our Mission & Identity', href: '#mission' },
-        { label: 'Meet Our Staff', href: '#staff' },
+        { label: 'Our History', href: '#school-timeline' },
+        { label: 'Our Mission & Identity', href: '#our-values' },
+        { label: 'Meet Our Staff', href: emailSchool('Staff enquiry') },
       ],
       secondTitle: 'Community',
       secondLinks: [
-        { label: 'Parish', href: '#community' },
-        { label: 'Mini Macs (Birth to 5 years)', href: '#community' },
-        { label: 'School Ready Program', href: '#community' },
-        { label: 'Out of School Hours Care', href: '#community' },
+        { label: 'Parish', href: emailSchool('Parish enquiry') },
+        { label: 'Mini Macs (Birth to 5 years)', href: '#news-stories' },
+        { label: 'School Ready Program', href: emailSchool('School Ready Program') },
+        { label: 'Out of School Hours Care', href: emailSchool('Out of School Hours Care') },
       ],
     },
     {
       title: 'Teaching & Learning',
       links: [
-        { label: 'Catholic Identity', href: '#learning' },
-        { label: 'Learning Philosophy', href: '#learning' },
-        { label: 'Learning Areas', href: '#learning' },
-        { label: 'Beyond the Classroom', href: '#learning' },
-        { label: 'Wellbeing', href: '#learning' },
+        { label: 'Catholic Identity', href: '#teaching-learning' },
+        { label: 'Learning Philosophy', href: '#teaching-learning' },
+        { label: 'Learning Areas', href: '#teaching-learning' },
+        { label: 'Beyond the Classroom', href: '#teaching-learning' },
+        { label: 'Wellbeing', href: '#teaching-learning' },
       ],
       secondTitle: 'News & Events',
       secondLinks: [
-        { label: 'eNewsletters', href: '#news' },
-        { label: 'News', href: '#news' },
-        { label: 'Term Dates', href: '#events' },
-        { label: 'Upcoming Events', href: '#events' },
-        { label: 'The Southern Cross', href: '#news' },
+        { label: 'eNewsletters', href: emailSchool('eNewsletter') },
+        { label: 'News', href: '#news-stories' },
+        { label: 'Term Dates', href: emailSchool('Term dates') },
+        { label: 'Upcoming Events', href: '#news-stories' },
+        { label: 'The Southern Cross', href: emailSchool('The Southern Cross') },
       ],
     },
     {
@@ -53,16 +54,16 @@ function Footer() {
       ],
       secondTitle: 'Contact Us',
       secondLinks: [
-        { label: 'Employment Opportunities', href: '#contact' },
-        { label: 'Volunteer Opportunities', href: '#contact' },
-        { label: 'Grievance, Compliment or Suggestion', href: '#contact' },
-        { label: 'Service Providers', href: '#contact' },
+        { label: 'Employment Opportunities', href: emailSchool('Employment opportunities') },
+        { label: 'Volunteer Opportunities', href: emailSchool('Volunteer opportunities') },
+        { label: 'Grievance, Compliment or Suggestion', href: emailSchool('Grievance, compliment or suggestion') },
+        { label: 'Service Providers', href: emailSchool('Service provider enquiry') },
       ],
     },
   ]
 
   return (
-    <footer className="school-footer">
+    <footer className="school-footer" id="contact">
 
       <div className="footer-main">
 

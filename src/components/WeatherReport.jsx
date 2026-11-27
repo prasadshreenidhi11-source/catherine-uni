@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, createElement } from 'react'
 import {
   Cloud,
   CloudDrizzle,
@@ -44,8 +44,9 @@ function getWeatherIcon(condition, isDay = true) {
   }
 }
 
-function ThermometerIcon() {
-  return <span className="weather-ticker-thermometer">°</span>
+function WeatherIcon({ condition, isDay, ...props }) {
+  const icon = condition ? getWeatherIcon(condition, isDay) : CloudSun
+  return createElement(icon, props)
 }
 
 function WeatherTicker({ items, translate }) {
@@ -112,25 +113,25 @@ function WeatherReport() {
       }
     } catch (err) {
       console.error('Failed to retrieve weather data:', err)
-      // If we don't already have data, set user-visible error state
-      if (!weatherData) {
-        setError('Weather information is temporarily unavailable.')
-      }
+      // Only shown while there is no earlier reading to fall back on
+      setError('Weather information is temporarily unavailable.')
     } finally {
       setLoading(false)
       setRefreshing(false)
     }
-  }, [weatherData])
+  }, [])
 
   // Initial load and 10-minute automatic refresh interval
   useEffect(() => {
-    fetchWeather(false)
+    const load = () => fetchWeather(false)
 
-    const intervalId = setInterval(() => {
-      fetchWeather(false)
-    }, 10 * 60 * 1000)
+    const firstLoadId = setTimeout(load, 0)
+    const intervalId = setInterval(load, 10 * 60 * 1000)
 
-    return () => clearInterval(intervalId)
+    return () => {
+      clearTimeout(firstLoadId)
+      clearInterval(intervalId)
+    }
   }, [fetchWeather])
 
   // Build marquee ticker items dynamically from actual current and daily weather data
@@ -182,10 +183,6 @@ function WeatherReport() {
     }
   }
 
-  const CurrentIcon = weatherData?.current?.condition
-    ? getWeatherIcon(weatherData.current.condition, weatherData.current.isDay)
-    : CloudSun
-
   const formattedUpdateTime = weatherData?.lastUpdated
     ? new Date(weatherData.lastUpdated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     : ''
@@ -232,7 +229,9 @@ function WeatherReport() {
               </div>
             ) : (
               <>
-                <CurrentIcon
+                <WeatherIcon
+                  condition={weatherData?.current?.condition}
+                  isDay={weatherData?.current?.isDay}
                   className="weather-current-icon"
                   strokeWidth={1.5}
                 />

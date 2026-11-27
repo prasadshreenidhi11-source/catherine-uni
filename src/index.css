@@ -2,7 +2,6 @@
 /* =========================================
    ALEX-UNI — GLOBAL STYLES
 ========================================= */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap');
 :root {
  font-family: 'Manrope', sans-serif;
   font-synthesis: none;
@@ -71,12 +70,73 @@ html {
   scroll-behavior: smooth;
 }
 
-#principal-welcome,
-#school-timeline,
-#teaching-learning,
-#news-stories,
-#our-values,
-#visit-us,
-#weather-report {
-  scroll-margin-top: 110px;
+section[id],
+footer[id] {
+  scroll-margin-top: 48px;
+}
+
+/* Shared spacing and type scale used by every homepage section */
+:root {
+  --section-y: clamp(44px, 5vw, 76px);
+  --gutter: clamp(18px, 5vw, 80px);
+  --fs-h2: clamp(34px, 2.4vw + 25px, 62px);
+  --fs-lead: clamp(15px, 0.3vw + 14px, 17px);
+  --fs-body: clamp(14px, 0.2vw + 13.2px, 15.5px);
+}
+
+/* Enrolment details were hover only, so show them on touch screens and tablets */
+@media (hover: none), (max-width: 1050px) {
+  .enrolment-card .enrolment-card-description {
+    max-height: 240px;
+    opacity: 1;
+    transform: none;
+    margin-bottom: 15px;
+  }
+}
+
+/* One eyebrow style for every section heading */
+.site-body-wrapper :is(.principal-eyebrow, .timeline-main-eyebrow, .teaching-eyebrow,
+  .values-eyebrow, .news-stories-eyebrow, .enrolment-label p, .visit-eyebrow) {
+  color: #8a6428;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* News had two stacked labels; keep one */
+.site-body-wrapper .news-heading-label {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  /* Value cards: height follows the text instead of leaving empty space */
+  .values-grid .value-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  /* Hero: keep the intro text readable over the building */
+  .hero .hero-bottom-shade {
+    height: 75%;
+    background: linear-gradient(to top, rgba(8, 20, 40, 0.88) 0%, rgba(8, 20, 40, 0.68) 55%, rgba(8, 20, 40, 0) 100%);
+  }
+}
+
+/* Hide Google Translate's own banner and tooltip; the top bar is the control */
+.goog-te-banner-frame,
+.skiptranslate iframe,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+html body {
+  top: 0 !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
 }

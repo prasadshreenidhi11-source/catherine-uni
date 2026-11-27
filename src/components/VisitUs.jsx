@@ -9,10 +9,8 @@ import {
 } from 'lucide-react'
 
 import { useTranslation } from '../context/useTranslation'
+import { emailSchool, MAP_DIRECTIONS } from '../siteLinks'
 import './VisitUs.css'
-
-const MAP_DIRECTIONS =
-  'https://www.google.com/maps/dir/12.972973,77.5283786/Catherine+McAuley+School,+210+Adams+Rd,+Craigmore+SA+5114,+Australia/@-7.1742678,59.134004,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x6ab0acc532a30233:0x13053e203ff873b0!2m2!1d138.7119181!2d-34.6889302?entry=ttu&g_ep=EgoyMDI2MTEyMi4wIKXMDSoASAFQAw%3D%3D'
 
 function VisitUs() {
   const { translate } = useTranslation()
@@ -42,9 +40,11 @@ function VisitUs() {
       <div className="visit-visual">
 
         <img
-          src="/images/baby.png"
+          src="/images/baby.webp"
           alt={translate('Students learning at Catherine McAuley School')}
           className="visit-hero-image"
+          loading="lazy"
+          decoding="async"
         />
 
         <div className="visit-image-overlay" />
@@ -83,9 +83,7 @@ function VisitUs() {
           <div className="visit-actions">
 
             <a
-              href={MAP_DIRECTIONS}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={emailSchool('School tour request')}
               className="visit-tour-button"
             >
               {translate('Book a Tour')}

@@ -10,7 +10,7 @@ const learningCards = [
     description:
       'We use explicit instruction and evidence-informed teaching strategies to help every child build knowledge, develop skills and grow in confidence.',
     image:
-      'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=70',
     alt: 'Students learning together in a bright classroom',
   },
   {
@@ -20,7 +20,7 @@ const learningCards = [
     description:
       'Our Mercy tradition inspires a welcoming community where Gospel values, kindness, respect and service are part of everyday school life.',
     image:
-      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=700&q=70',
     alt: 'Children enjoying a positive school learning experience',
   },
   {
@@ -30,7 +30,7 @@ const learningCards = [
     description:
       'We nurture a safe and caring environment where children build friendships, develop resilience and feel a strong sense of belonging.',
     image:
-      'https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=700&q=70',
     alt: 'Children spending time together outdoors',
   },
   {
@@ -40,7 +40,7 @@ const learningCards = [
     description:
       'From creative projects to outdoor exploration, students are encouraged to ask questions, try new things and connect learning with the world around them.',
     image:
-      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&q=70',
     alt: 'Young children exploring and learning through activities',
   },
 ]
@@ -94,6 +94,7 @@ function TeachingLearning() {
                         src={card.image}
                         alt={copy === 0 ? card.alt : ''}
                         loading="lazy"
+                        decoding="async"
                       />
 
                       <span className="learning-card-number">

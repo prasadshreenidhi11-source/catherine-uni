@@ -7,6 +7,7 @@ import './HeroSection.css'
 export default function HeroSection() {
   const videoRefA = useRef(null)
   const videoRefB = useRef(null)
+  const sectionRef = useRef(null)
   const { translate } = useTranslation()
 
   // Track active layer ('A' or 'B') for crossfading
@@ -15,60 +16,55 @@ export default function HeroSection() {
   useEffect(() => {
     const vidA = videoRefA.current
     const vidB = videoRefB.current
-    if (!vidA || !vidB) return
-
-    // Safely attempt autoplay
-    vidA.play().catch(() => {})
+    const hero = sectionRef.current
+    if (!vidA || !vidB || !hero) return
 
     // We trigger the crossfade slightly before the video finishes (~1.1s offset)
     const FADE_START_OFFSET = 1.1
-    let crossfadeTriggered = false
+    let current = vidA
+    let switching = false
 
-    const handleTimeUpdateA = () => {
-      if (vidA.duration && vidA.currentTime >= vidA.duration - FADE_START_OFFSET && !crossfadeTriggered) {
-        crossfadeTriggered = true
-        vidB.currentTime = 0
-        vidB.play().then(() => {
-          setActiveLayer('B')
-        }).catch(() => {})
-      }
+    const crossfade = (from, to, layer) => () => {
+      if (from !== current || switching || !from.duration) return
+      if (from.currentTime < from.duration - FADE_START_OFFSET) return
+
+      switching = true
+      to.currentTime = 0
+      to.play()
+        .then(() => {
+          current = to
+          setActiveLayer(layer)
+        })
+        .catch(() => {})
+        .finally(() => { switching = false })
     }
 
-    const handleTimeUpdateB = () => {
-      if (vidB.duration && vidB.currentTime >= vidB.duration - FADE_START_OFFSET && !crossfadeTriggered) {
-        crossfadeTriggered = true
-        vidA.currentTime = 0
-        vidA.play().then(() => {
-          setActiveLayer('A')
-        }).catch(() => {})
-      }
-    }
-
-    const handleEndedA = () => {
-      crossfadeTriggered = false
-      vidA.pause()
-    }
-
-    const handleEndedB = () => {
-      crossfadeTriggered = false
-      vidB.pause()
-    }
+    const handleTimeUpdateA = crossfade(vidA, vidB, 'B')
+    const handleTimeUpdateB = crossfade(vidB, vidA, 'A')
 
     vidA.addEventListener('timeupdate', handleTimeUpdateA)
     vidB.addEventListener('timeupdate', handleTimeUpdateB)
-    vidA.addEventListener('ended', handleEndedA)
-    vidB.addEventListener('ended', handleEndedB)
+
+    // Only decode video while the hero is on screen
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        current.play().catch(() => {})
+      } else {
+        vidA.pause()
+        vidB.pause()
+      }
+    })
+    observer.observe(hero)
 
     return () => {
+      observer.disconnect()
       vidA.removeEventListener('timeupdate', handleTimeUpdateA)
       vidB.removeEventListener('timeupdate', handleTimeUpdateB)
-      vidA.removeEventListener('ended', handleEndedA)
-      vidB.removeEventListener('ended', handleEndedB)
     }
   }, [])
 
   return (
-    <section className="hero" id="home">
+    <section ref={sectionRef} className="hero" id="home">
       {/* 1. Thin Navy Blue Utility Header at the very top */}
       <MiniHeader />
 
@@ -81,6 +77,7 @@ export default function HeroSection() {
           muted
           playsInline
           preload="auto"
+          poster="/images/hero-poster.webp"
         >
           <source src="/videos/school.mp4" type="video/mp4" />
         </video>
@@ -90,7 +87,7 @@ export default function HeroSection() {
           className={`hero-video ${activeLayer === 'B' ? 'video-visible' : 'video-hidden'}`}
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
         >
           <source src="/videos/school.mp4" type="video/mp4" />
         </video>
@@ -126,12 +123,12 @@ export default function HeroSection() {
         </p>
 
         <div className="hero-actions">
-          <a href="#about" className="primary-button">
+          <a href="#principal-welcome" className="primary-button">
             <span>{translate('Discover Our School')}</span>
             <span className="btn-arrow" aria-hidden="true">↗</span>
           </a>
 
-          <a href="#learning" className="secondary-button">
+          <a href="#teaching-learning" className="secondary-button">
             <span>{translate('Explore Learning')}</span>
             <span className="btn-arrow-right" aria-hidden="true">→</span>
           </a>
@@ -145,7 +142,7 @@ export default function HeroSection() {
           <span>{translate('A COMMUNITY BUILT ON POSSIBILITY')}</span>
         </div>
 
-        <a href="#about" className="scroll-indicator" aria-label="Scroll down to explore">
+        <a href="#principal-welcome" className="scroll-indicator" aria-label="Scroll down to explore">
           <span className="scroll-text">{translate('SCROLL TO EXPLORE')}</span>
           <span className="scroll-arrow" aria-hidden="true">↓</span>
         </a>

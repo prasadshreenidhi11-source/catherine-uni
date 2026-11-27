@@ -5,9 +5,10 @@ import { getWeatherData } from '../services/weatherService.js'
  */
 export async function getWeather(req, res) {
   try {
-    const lat = req.query.latitude || process.env.SCHOOL_LATITUDE || '-34.6889'
-    const lon = req.query.longitude || process.env.SCHOOL_LONGITUDE || '138.7119'
-    const timezone = req.query.timezone || process.env.SCHOOL_TIMEZONE || 'Australia/Adelaide'
+    // Campus location comes from config only: the cache is shared by all visitors
+    const lat = process.env.SCHOOL_LATITUDE || '-34.6889'
+    const lon = process.env.SCHOOL_LONGITUDE || '138.7119'
+    const timezone = process.env.SCHOOL_TIMEZONE || 'Australia/Adelaide'
     const forceRefresh = req.query.refresh === 'true'
 
     const weatherData = await getWeatherData({

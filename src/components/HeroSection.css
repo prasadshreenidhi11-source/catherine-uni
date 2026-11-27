@@ -410,17 +410,6 @@
   }
 
   .hero-footer {
-    left: 6%;
-    right: 6%;
-    bottom: 18px;
-  }
-
-  .hero-location span:last-child,
-  .hero-index .index-label {
-    display: none;
-  }
-
-  .scroll-indicator {
     display: none;
   }
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { X, ArrowUpRight, Phone, Mail, MapPin } from 'lucide-react'
 import { useTranslation } from '../context/useTranslation'
@@ -7,6 +7,26 @@ import './Header.css'
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { translate } = useTranslation()
+  const openButtonRef = useRef(null)
+  const closeButtonRef = useRef(null)
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const openButton = openButtonRef.current
+    const behind = [
+      document.getElementById('utility-bar'),
+      document.getElementById('root'),
+    ].filter(Boolean)
+
+    behind.forEach((element) => { element.inert = true })
+    closeButtonRef.current?.focus()
+
+    return () => {
+      behind.forEach((element) => { element.inert = false })
+      openButton?.focus({ preventScroll: true })
+    }
+  }, [menuOpen])
 
   // Prevent background scrolling while full-screen navigation menu is open
   useEffect(() => {
@@ -35,11 +55,11 @@ export default function Header() {
 
   const navLinks = [
     { href: '#home', label: 'Home' },
-    { href: '#about', label: 'Our School' },
-    { href: '#learning', label: 'Teaching & Learning' },
+    { href: '#principal-welcome', label: 'Our School' },
+    { href: '#teaching-learning', label: 'Teaching & Learning' },
     { href: '#enrolment', label: 'Enrolment' },
-    { href: '#community', label: 'Community' },
-    { href: '#news', label: 'News & Events' },
+    { href: '#our-values', label: 'Community' },
+    { href: '#news-stories', label: 'News & Events' },
     { href: '#contact', label: 'Contact Us' },
   ]
 
@@ -71,6 +91,7 @@ export default function Header() {
           </div>
 
           <button
+            ref={closeButtonRef}
             type="button"
             className="fullscreen-nav-close"
             onClick={closeMenu}
@@ -159,6 +180,7 @@ export default function Header() {
 
         {/* Right side: Prominent Hamburger Button */}
         <button
+          ref={openButtonRef}
           type="button"
           className="main-hamburger-btn"
           onClick={() => setMenuOpen(true)}

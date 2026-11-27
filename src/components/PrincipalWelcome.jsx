@@ -1,9 +1,30 @@
-
+import { useEffect, useRef } from 'react'
 import { useTranslation } from '../context/useTranslation'
 import './PrincipalWelcome.css'
 
 function PrincipalWelcome() {
   const { translate } = useTranslation()
+  const videoRef = useRef(null)
+
+  // Download and play the video only once it is on screen
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0.2 }
+    )
+    observer.observe(video)
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
    <section className="principal-welcome" id="principal-welcome">
@@ -12,13 +33,14 @@ function PrincipalWelcome() {
         <div className="principal-video-column">
           <div className="principal-video-frame">
             <video
+              ref={videoRef}
               className="principal-video"
               src="/videos/principal.mp4"
-              autoPlay
+              poster="/images/principal-poster.webp"
               muted
               loop
               playsInline
-              preload="auto"
+              preload="none"
             />
           </div>
         </div>
@@ -60,7 +82,7 @@ function PrincipalWelcome() {
                 <span>{translate('Principal')}</span>
               </div>
 
-              <a href="#learning" className="principal-cta">
+              <a href="#teaching-learning" className="principal-cta">
                 {translate('Read the Principal’s welcome')}
                 <span>→</span>
               </a>

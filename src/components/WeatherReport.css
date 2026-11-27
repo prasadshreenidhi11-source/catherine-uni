@@ -62,6 +62,8 @@
   padding: 4px;
   border-radius: 50%;
   transition: color 0.25s ease, transform 0.25s ease;
+  min-width: 32px;
+  min-height: 32px;
 }
 
 .weather-refresh-button:hover {
@@ -171,7 +173,7 @@
   justify-self: end;
   color: rgba(255, 255, 255, 0.78);
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   text-align: right;
 }
@@ -208,7 +210,7 @@
 .weather-forecast-name {
   color: rgba(255, 255, 255, 0.95);
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 1.6px;
   white-space: nowrap;
@@ -297,7 +299,7 @@
 
 .weather-marquee-diamond {
   color: rgba(255, 255, 255, 0.55);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .weather-ticker-thermometer {
@@ -332,14 +334,17 @@
     text-align: left;
   }
 
+}
+
+@media (min-width: 601px) and (max-width: 1280px) {
   .weather-forecast {
-    grid-template-columns: repeat(7, minmax(110px, 1fr));
-    overflow-x: auto;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 
   .weather-forecast-day {
-    gap: 9px;
-    padding: 5px 8px;
+    flex-direction: column;
+    gap: 7px;
+    padding: 8px 2px;
   }
 }
 
@@ -359,7 +364,7 @@
   }
 
   .weather-current-location {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 1.7px;
   }
 
@@ -382,7 +387,7 @@
 
   .weather-source {
     grid-column: auto;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .weather-forecast {
@@ -403,7 +408,7 @@
   }
 
   .weather-forecast-name {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .weather-forecast-icon {
@@ -427,7 +432,7 @@
   .weather-marquee-item {
     gap: 9px;
     padding: 0 19px;
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 

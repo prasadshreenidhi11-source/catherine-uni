@@ -11,8 +11,8 @@ const stories = [
     description:
       'We are excited to share plans for a multimillion-dollar two-storey building upgrade.',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhdEPdUdvWQEFoigCllIpKDJGX5ppCXxeoi6fLedqj0w&s=10',
-    link: '#'
+      '/images/school-building.webp',
+    link: null
   },
   {
     number: '02',
@@ -21,8 +21,8 @@ const stories = [
     description:
       'A safe and friendly place for children to play, explore, learn and make new friends.',
     image:
-      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1000&q=85',
-    link: '#'
+      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&q=70',
+    link: null
   },
   {
     number: '03',
@@ -31,8 +31,8 @@ const stories = [
     description:
       'Our Student Leadership group gives students opportunities to develop their skills and share their voices.',
     image:
-      'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=85',
-    link: '#'
+      'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=70',
+    link: null
   },
   {
     number: '04',
@@ -41,15 +41,20 @@ const stories = [
     description:
       'We support children and families through postings, deployments and times of absence.',
     image:
-      'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=85',
-    link: '#'
+      'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=700&q=70',
+    link: null
   }
 ]
 
+// Set to the news archive address to show the "Explore all news" button
+const ALL_NEWS_URL = null
+
 function StoryCard({ story, translate, position }) {
+  const Card = story.link ? 'a' : 'article'
+
   return (
-    <a
-      href={story.link}
+    <Card
+      href={story.link || undefined}
       className={`news-story-card ${position}`}
     >
       <div className="news-story-visual">
@@ -74,12 +79,14 @@ function StoryCard({ story, translate, position }) {
 
         <p>{translate(story.description)}</p>
 
-        <span className="news-story-read">
-          {translate('Read Story')}
-          <ArrowRight size={16} />
-        </span>
+        {story.link && (
+          <span className="news-story-read">
+            {translate('Read Story')}
+            <ArrowRight size={16} />
+          </span>
+        )}
       </div>
-    </a>
+    </Card>
   )
 }
 
@@ -128,8 +135,10 @@ function NewsStories() {
         <div className="news-school-image">
           <div className="news-school-frame">
             <img
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Catherine McAuley School"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -155,10 +164,12 @@ function NewsStories() {
 
       </div>
 
-      <a href="#all-news" className="news-all-link">
-        {translate('Explore all news')}
-        <ArrowUpRight size={18} />
-      </a>
+      {ALL_NEWS_URL && (
+        <a href={ALL_NEWS_URL} className="news-all-link">
+          {translate('Explore all news')}
+          <ArrowUpRight size={18} />
+        </a>
+      )}
 
     </section>
   )
