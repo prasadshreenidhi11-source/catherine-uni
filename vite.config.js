@@ -5,4 +5,12 @@ import { googleTranslatePlugin } from './server/translatePlugin.js'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), googleTranslatePlugin()],
+  server: {
+    proxy: {
+      '/api/weather': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
+  },
 })

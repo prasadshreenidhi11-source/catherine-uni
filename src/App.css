@@ -46,15 +46,10 @@ a {
   position: relative;
   width: 100%;
 
-  background:
-    linear-gradient(
-      135deg,
-      #edf4fc 0%,
-      #e3effb 45%,
-      #dceafa 100%
-    );
-
+  background-color: #edf4fc;
+  background-image: url('/glossy.png');
   background-repeat: no-repeat;
+  background-position: center top;
   background-size: cover;
   background-attachment: fixed;
 

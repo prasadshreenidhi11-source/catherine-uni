@@ -51,6 +51,42 @@
   white-space: nowrap;
 }
 
+.weather-refresh-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.weather-refresh-button:hover {
+  color: #e5bd71;
+  transform: rotate(35deg);
+}
+
+.weather-refresh-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.weather-spin-icon {
+  animation: weatherSpin 1s linear infinite;
+}
+
+@keyframes weatherSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .weather-live-dot {
   position: relative;
   width: 9px;
@@ -59,6 +95,49 @@
   border-radius: 50%;
   background: #e5bd71;
   box-shadow: 0 0 0 5px rgba(229, 189, 113, 0.18);
+}
+
+.weather-live-dot-pulse {
+  animation: weatherDotPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes weatherDotPulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 3px rgba(229, 189, 113, 0.3);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px rgba(229, 189, 113, 0.1);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 3px rgba(229, 189, 113, 0.3);
+  }
+}
+
+.weather-loading-text {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+}
+
+.weather-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fca5a5;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+}
+
+.weather-forecast-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  padding: 15px;
 }
 
 .weather-current-condition {

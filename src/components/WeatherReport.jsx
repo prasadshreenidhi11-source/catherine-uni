@@ -1,40 +1,56 @@
-
+import { useState, useEffect, useCallback } from 'react'
 import {
   Cloud,
+  CloudDrizzle,
+  CloudFog,
+  CloudLightning,
   CloudRain,
+  CloudSnow,
   CloudSun,
   Sun,
   Droplets,
   Wind,
+  Thermometer,
+  RefreshCw,
+  AlertCircle,
 } from 'lucide-react'
 
 import { useTranslation } from '../context/useTranslation'
 import './WeatherReport.css'
 
-const weeklyForecast = [
-  { day: 'SAT', high: '22°', low: '15°', Icon: CloudRain },
-  { day: 'SUN', high: '19°', low: '13°', Icon: CloudRain },
-  { day: 'MON', high: '22°', low: '12°', Icon: Cloud },
-  { day: 'TUE', high: '29°', low: '11°', Icon: Cloud },
-  { day: 'WED', high: '34°', low: '18°', Icon: CloudSun },
-  { day: 'TODAY', high: '24°', low: '18°', Icon: CloudSun },
-  { day: 'FRI', high: '26°', low: '18°', Icon: CloudRain },
-]
-
-const weatherTickerItems = [
-  { label: 'Sunset 8.08pm', Icon: Sun },
-  { label: 'Feels like 24°', Icon: ThermometerIcon },
-  { label: 'Wind 14 km/h', Icon: Wind },
-  { label: 'Humidity 62%', Icon: Droplets },
-  { label: 'UV Index 6', Icon: Sun },
-  { label: 'Sunrise 5.56am', Icon: Sun },
-]
+/**
+ * Maps condition strings / WMO codes to appropriate Lucide React icons
+ */
+function getWeatherIcon(condition, isDay = true) {
+  switch (condition) {
+    case 'clear':
+      return Sun
+    case 'partly-cloudy':
+      return CloudSun
+    case 'cloudy':
+      return Cloud
+    case 'fog':
+      return CloudFog
+    case 'rain':
+      return CloudRain
+    case 'drizzle':
+      return CloudDrizzle
+    case 'thunderstorm':
+      return CloudLightning
+    case 'snow':
+      return CloudSnow
+    default:
+      return isDay ? Sun : CloudSun
+  }
+}
 
 function ThermometerIcon() {
   return <span className="weather-ticker-thermometer">°</span>
 }
 
-function WeatherTicker({ translate }) {
+function WeatherTicker({ items, translate }) {
+  if (!items || items.length === 0) return null
+
   return (
     <div className="weather-marquee">
       <div className="weather-marquee-track">
@@ -44,7 +60,7 @@ function WeatherTicker({ translate }) {
             key={copy}
             aria-hidden={copy === 1 ? 'true' : undefined}
           >
-            {weatherTickerItems.map(({ label, Icon }, index) => (
+            {items.map(({ label, Icon }, index) => (
               <div
                 className="weather-marquee-item"
                 key={`${copy}-${index}`}
@@ -64,72 +80,224 @@ function WeatherTicker({ translate }) {
 function WeatherReport() {
   const { translate } = useTranslation()
 
+  const [weatherData, setWeatherData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
+  const [error, setError] = useState(null)
+
+  const fetchWeather = useCallback(async (isManual = false) => {
+    if (isManual) {
+      setRefreshing(true)
+    }
+
+    try {
+      const startTime = Date.now()
+      const url = isManual ? '/api/weather?refresh=true' : '/api/weather'
+      const response = await fetch(url)
+
+      if (!response.ok) {
+        throw new Error(`Weather service returned status ${response.status}`)
+      }
+
+      const data = await response.json()
+      setWeatherData(data)
+      setError(null)
+
+      // Ensure refresh animation is visible for at least 600ms on manual click
+      if (isManual) {
+        const elapsed = Date.now() - startTime
+        if (elapsed < 600) {
+          await new Promise((r) => setTimeout(r, 600 - elapsed))
+        }
+      }
+    } catch (err) {
+      console.error('Failed to retrieve weather data:', err)
+      // If we don't already have data, set user-visible error state
+      if (!weatherData) {
+        setError('Weather information is temporarily unavailable.')
+      }
+    } finally {
+      setLoading(false)
+      setRefreshing(false)
+    }
+  }, [weatherData])
+
+  // Initial load and 10-minute automatic refresh interval
+  useEffect(() => {
+    fetchWeather(false)
+
+    const intervalId = setInterval(() => {
+      fetchWeather(false)
+    }, 10 * 60 * 1000)
+
+    return () => clearInterval(intervalId)
+  }, [fetchWeather])
+
+  // Build marquee ticker items dynamically from actual current and daily weather data
+  const tickerItems = []
+  if (weatherData && weatherData.current) {
+    const { current, today } = weatherData
+
+    if (current.apparentTemperature !== undefined) {
+      tickerItems.push({
+        label: `Feels like ${current.apparentTemperature}°`,
+        Icon: Thermometer,
+      })
+    }
+    if (current.windSpeed !== undefined) {
+      tickerItems.push({
+        label: `Wind ${current.windSpeed} km/h ${current.windDirection || ''}`.trim(),
+        Icon: Wind,
+      })
+    }
+    if (current.relativeHumidity !== undefined) {
+      tickerItems.push({
+        label: `Humidity ${current.relativeHumidity}%`,
+        Icon: Droplets,
+      })
+    }
+    if (today && today.uvIndex !== null && today.uvIndex !== undefined) {
+      tickerItems.push({
+        label: `UV Index ${today.uvIndex}`,
+        Icon: Sun,
+      })
+    }
+    if (today && today.sunrise) {
+      tickerItems.push({
+        label: `Sunrise ${today.sunrise}`,
+        Icon: Sun,
+      })
+    }
+    if (today && today.sunset) {
+      tickerItems.push({
+        label: `Sunset ${today.sunset}`,
+        Icon: Sun,
+      })
+    }
+    if (current.precipitation !== undefined && current.precipitation > 0) {
+      tickerItems.push({
+        label: `Precipitation ${current.precipitation} mm`,
+        Icon: CloudRain,
+      })
+    }
+  }
+
+  const CurrentIcon = weatherData?.current?.condition
+    ? getWeatherIcon(weatherData.current.condition, weatherData.current.isDay)
+    : CloudSun
+
+  const formattedUpdateTime = weatherData?.lastUpdated
+    ? new Date(weatherData.lastUpdated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    : ''
+
   return (
     <section id="weather-report" className="weather-report">
       <div className="weather-panel">
 
         {/* CURRENT WEATHER */}
-
         <div className="weather-current">
 
           <div className="weather-current-location">
-            <span className="weather-live-dot" />
-            <span>{translate('CRAIGMORE · RIGHT NOW')}</span>
+            <span
+              className={`weather-live-dot ${refreshing ? 'weather-live-dot-pulse' : ''}`}
+              title={refreshing ? 'Refreshing...' : 'Live'}
+            />
+            <span>
+              {translate('CRAIGMORE · RIGHT NOW')}
+            </span>
+            <button
+              type="button"
+              className="weather-refresh-button"
+              onClick={() => fetchWeather(true)}
+              disabled={refreshing}
+              title="Refresh real-time weather"
+              aria-label="Refresh weather"
+            >
+              <RefreshCw
+                size={14}
+                className={refreshing ? 'weather-spin-icon' : ''}
+              />
+            </button>
           </div>
 
           <div className="weather-current-condition">
-            <CloudSun
-              className="weather-current-icon"
-              strokeWidth={1.5}
-            />
+            {loading && !weatherData ? (
+              <div className="weather-loading-text">
+                {translate('Connecting to live campus weather...')}
+              </div>
+            ) : error && !weatherData ? (
+              <div className="weather-error-banner">
+                <AlertCircle size={20} />
+                <span>{translate(error)}</span>
+              </div>
+            ) : (
+              <>
+                <CurrentIcon
+                  className="weather-current-icon"
+                  strokeWidth={1.5}
+                />
 
-            <span className="weather-current-temperature">
-              24°
-            </span>
+                <span className="weather-current-temperature">
+                  {weatherData?.current?.temperature ?? '--'}°
+                </span>
 
-            <span className="weather-current-description">
-              {translate('Partly cloudy')}
-            </span>
+                <span className="weather-current-description">
+                  {translate(weatherData?.current?.description || 'Loading...')}
+                </span>
+              </>
+            )}
           </div>
 
-          <span className="weather-source">
-            {translate('Sample weather for Craigmore, South Australia')}
-          </span>
+          <div className="weather-source">
+            <span>
+              {translate('Live Craigmore Campus Weather')}
+            </span>
+            {formattedUpdateTime && (
+              <span className="weather-update-meta">
+                {' · '}{translate('Updated')} {formattedUpdateTime}
+              </span>
+            )}
+          </div>
 
         </div>
 
         {/* SEVEN-DAY FORECAST */}
-
         <div className="weather-forecast">
+          {weatherData?.dailyForecast && weatherData.dailyForecast.length > 0 ? (
+            weatherData.dailyForecast.map((item) => {
+              const DayIcon = getWeatherIcon(item.condition)
+              return (
+                <div
+                  className={`weather-forecast-day ${
+                    item.day === 'TODAY' ? 'weather-forecast-today' : ''
+                  }`}
+                  key={item.date || item.day}
+                >
+                  <span className="weather-forecast-name">
+                    {translate(item.day)}
+                  </span>
 
-          {weeklyForecast.map(({ day, high, low, Icon }) => (
-            <div
-              className={`weather-forecast-day ${
-                day === 'TODAY' ? 'weather-forecast-today' : ''
-              }`}
-              key={day}
-            >
-              <span className="weather-forecast-name">
-                {translate(day)}
-              </span>
+                  <DayIcon
+                    className="weather-forecast-icon"
+                    strokeWidth={1.6}
+                  />
 
-              <Icon
-                className="weather-forecast-icon"
-                strokeWidth={1.6}
-              />
-
-              <div className="weather-forecast-temperatures">
-                <strong>{high}</strong>
-                <span>{low}</span>
-              </div>
+                  <div className="weather-forecast-temperatures">
+                    <strong>{item.high}°</strong>
+                    <span>{item.low}°</span>
+                  </div>
+                </div>
+              )
+            })
+          ) : (
+            <div className="weather-forecast-loading">
+              {loading ? translate('Loading forecast...') : translate('Forecast temporarily unavailable')}
             </div>
-          ))}
-
+          )}
         </div>
 
         {/* WEATHER INFORMATION MARQUEE */}
-
-        <WeatherTicker translate={translate} />
+        <WeatherTicker items={tickerItems} translate={translate} />
 
       </div>
     </section>
